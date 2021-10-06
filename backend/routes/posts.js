@@ -16,8 +16,6 @@ const post = require("../controllers/postController.js");
  // Retrieve latest post
  router.get("/latest", post.findRecent);
 
- // Retrieve all post
- router.get("/top", post.findTop);
 
  // Retrieve a post
  router.get("/:id", post.findOne);
