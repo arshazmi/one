@@ -39,15 +39,13 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve 4 given Posts Info from the database(order by latest).
+// Retrieve comment count Info from the database.
 exports.findCount = (req, res) => {
 
   Comment.findAll({
           
         attributes:['postId',[sequelize.fn('COUNT', sequelize.col('comment_desc')), 'comment_count']],
         group : ['postId']
-      
- 
   })
     .then(data => {
       res.send(data);
