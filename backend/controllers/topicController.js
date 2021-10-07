@@ -6,7 +6,23 @@ const model = require("../models");
 // write modelname 
 const Topic =model.db.topic;
 const User =model.db.user;
+const TopicCategory =model.db.topiccategory;
 
+// Retrieve all  Topic Category from the database.
+exports.findCategory = (req, res) => {
+
+  TopicCategory.findAll(
+    {attributes: ['id', 'categoryName']})
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).json({
+        message:
+          err.message || "Some error occurred while retrieving Topic Category."
+      });
+    });
+};
 // Create and Save a new Topic
 exports.create = (req, res) => {
  
@@ -16,7 +32,7 @@ exports.create = (req, res) => {
     description:req.body.description,
     imageUrl: req.body.imageUrl,
     userId:Math.floor(Math.random() * 2)+1,
-    topiccategoryId:Math.floor(Math.random() * 26)+1
+    topiccategoryId:req.body.topiccategoryId
   };
 
   // Save Topic in the database

@@ -2,7 +2,7 @@
 const {Model} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class TopicCategory extends Model {
+  class PostEngage extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -12,21 +12,24 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
-  TopicCategory.init({
-    categoryName: {
-                    type: DataTypes.STRING,
-                    field: 'category_name'
-                }
-   
+  PostEngage.init({
+    like: {
+                    type: DataTypes.INTEGER,
+                    field: 'post_likes'
+                },
+ 
+    dislike:{
+                 type: DataTypes.INTEGER,
+                 field: 'post_dislikes'
+    }
   }, {
     sequelize,
-    modelName: 'topiccategory',
+    modelName: 'postengage',
   });
-  TopicCategory.associate = (models) => {
+  PostEngage.associate = (models) => {
    
-    TopicCategory.hasMany(models.topic);
-   
+   PostEngage.hasOne(models.post);
 
   }
-  return TopicCategory;
+  return PostEngage;
 };
