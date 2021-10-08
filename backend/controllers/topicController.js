@@ -82,12 +82,12 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Retrieve 3 recent Topic Info from the database(for carousal).
+// Retrieve 10 recent Topic Info from the database(for carousal).
 exports.findRecent = (req, res) => {
 
     Topic.findAll({ 
       attributes: ['id', 'topicName','imageUrl'],
-      limit: 3 ,
+      limit: 10 ,
       order: [["createdAt", "DESC"]],
       include : [
         { 

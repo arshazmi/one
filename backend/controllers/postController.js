@@ -126,7 +126,33 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Post.findOne(  {  where: { id: id } } )
+  Post.findOne(  {     
+    attributes: ['id', 'postName','imageUrl','pdfUrl','audioUrl','desc','updatedAt',[sequelize.fn('COUNT', sequelize.col('comments.id')), 'comment_count']],
+    where: { id: id },
+    include : [
+      { 
+        model: User, 
+        attributes:['id','userName'],
+        required: true,
+      },
+      { 
+        model: Topic, 
+        attributes:['id','topicName'],
+        required: true,
+      },
+      { 
+        model: PostEngage, 
+        attributes:['id','like','dislike'],
+        required: true,
+      },
+      { 
+        model: Comment, 
+        attributes:['id','description','like','dislike'],        
+        required:true
+      }
+    ],
+    group : ['post.id','user.id','topic.id','postengage.id','comments.id']
+      } )
     .then(data => {
       res.send(data);
     })
