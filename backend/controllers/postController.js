@@ -75,7 +75,7 @@ exports.findRecent = (req, res) => {
       },
       { 
         model: Topic, 
-        attributes:['id','topicName'],
+        attributes:['id','topicName','imageUrl'],
         required: true,
       },
       { 
