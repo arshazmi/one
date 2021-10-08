@@ -1,12 +1,12 @@
-<div class="section-body mb-3" *ngFor="let topic of Topics">
+<div class="section-body mb-3" *ngFor="let top of topics">
     <div class="article">
         <!-- Media -->
         <div class="media p-3">
             <img src="../../assets/images/author1.jpg" alt="John Doe" class="mr-3 rounded-circle" style="width: 86px" />
             <div class="media-body">
                 <div class="article-title">
-                    <h5>
-                        {{topic.topic}}
+                    <h5 (click)="getTopicDetail(top)">
+                        {{top.topic.topicName}}
                         <span class="locked alert-bg"><img src="../../assets/images/lock-icon.png" /></span>
                         <a href="#" class="
                     btn btn-round
@@ -17,8 +17,8 @@
                     </h5>
                 </div>
                 <div class="article-body">
-                    <h5>
-                        I Totally agree
+                    <h5 (click)="getPostDetail(top)">
+                        {{top.postName}}
                         <a class="
                     btn btn-outline-primary btn-round
                     font-12
@@ -28,14 +28,11 @@
                             &nbsp; Create Post</a>
                     </h5>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation
+                     {{top.desc}}
                         <a class="font-pink" href="#"><small>more...</small></a>
                     </p>
                     <p class="author">
-                        Posted by <a href="#">James_007 </a>2 hours ago
+                        Posted by <a href="#">{{top.user.userName}} </a>2 hours ago
                     </p>
                     <!---->
                     <!-- <div class="tags mb-4">
@@ -53,20 +50,11 @@
                         </a>
                     </div> -->
                     <!--//-->
-                    <img src="../../assets/images/voice-image.jpg" class="img-fluid mb-4" />
+                    <!-- <img src="../../assets/images/voice-image.jpg" class="img-fluid mb-4" /> -->
                     <div class="popup-images d-flex postImages">
-                        <a href="#" class="m-1">
-                            <img src="../../assets/images/widget-1.jpg" class="brd-rounded5" />
+                        <a href="#" class="m-1" >
+                            <img style="height: 150px;" src="{{top.imageUrl}}" class="brd-rounded5" />
                         </a>
-                        <!-- <a href="#" class="m-1">
-                            <img src="../../assets/images/widget-2.jpg" class="brd-rounded5" />
-                        </a>
-                        <a href="#" class="m-1">
-                            <img src="../../assets/images/widget-3.jpg" class="brd-rounded5" />
-                        </a>
-                        <a href="#" class="m-1">
-                            <img src="../../assets/images/widget-4.jpg" class="brd-rounded5" />
-                        </a> -->
                     </div>
                 </div>
             </div>
@@ -77,36 +65,20 @@
             <ul class="list-unstyled coments-use">
                 <li>
                     <a href="#" class="comment"><img src="../../assets/images/icon-like.png" /></a>
-                    <span class="total">1 K</span>
+                    <span class="total">{{top.postengage.post_likes}}</span>
                 </li>
                 <li>
                     <a href="#" class="comment"><img src="../../assets/images/icon-dislike.png" /></a>
-                    <span class="total">15</span>
+                    <span class="total">{{top.postengage.post_dislikes}}</span>
                 </li>
                 <li>
                     <a href="#">
                         <img src="../../assets/images/icon-comment.png" />
-                        <sup><span class="locked alert-bg"><img src="../../assets/images/lock-icon.png" /></span></sup>
+                        <!-- <sup><span class="locked alert-bg"><img src="../../assets/images/lock-icon.png" /></span></sup> -->
                     </a>
-                    <span class="total">32</span>
+                    <span class="total"></span>
                 </li>
-                <!-- <li>
-                    <a href="#" class="comment"><img src="../../assets/images/icon-forward.png" /></a>
-                    <span class="total">20</span>
-                </li>
-                <li>
-                    <a href="#" class="comment"><img src="../../assets/images/icon-pin.png" /></a>
-                    <span class="total">08</span>
-                </li>
-                <li class="border-none" data-toggle="modal" data-target="#myflag1">
-                    <a href="#" class="comment"><img src="../../assets/images/icon-flag.png" /></a>
-                    <span class="total">01</span>
-                </li>
-                <li class="float-right" data-toggle="modal" data-target="#myAddToPlayList">
-                    <a href="#" class="comment"><img src="../../assets/images/icon-music.png" />
-                        <span class="total">Add to playlist</span>
-                    </a>
-                </li> -->
+               
             </ul>
         </div>
         <!--//-->

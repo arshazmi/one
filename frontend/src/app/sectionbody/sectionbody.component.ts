@@ -7,26 +7,43 @@ import { ActivatedRoute,Router } from '@angular/router';
   styleUrls: ['./sectionbody.component.css']
 })
 export class SectionbodyComponent implements OnInit {
-   Topics=[{
+   topics=[{
     id: '',
     postName: '',
     imageUrl: '',
     pdfUrl: '',
     audioUrl: '',
     desc:'',
-    user:'',
-    topic:'', 
-    postengage:'' 
+    user:{
+      id:'',
+      userName:'',
+    },
+    topic:{
+      id:'',
+      topicName:''
+    }, 
+    postengage:{
+      id:'',
+      post_likes:'',
+      post_dislikes:''
+    } 
    }]
   constructor(private router:Router,private route: ActivatedRoute,
     private _Service:RightService) { }
 
   ngOnInit(): void {
-    this._Service.getTopics().subscribe((data)=>{
-      console.log(data);
-      this.Topics=JSON.parse(JSON.stringify(data));
-      
+   
+      this._Service.getTopics().subscribe((data)=>{
+        console.log(data);
+        this.topics=JSON.parse(JSON.stringify(data)); 
   })
   }
 
+  getPostDetail(top:any){
+    this.router.navigate(['postdetail',top.id]);
+  }
+
+  getTopicDetail(top:any){
+    this.router.navigate(['topicdetail',top.id]);
+  }
 }
