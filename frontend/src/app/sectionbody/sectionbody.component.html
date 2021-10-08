@@ -1,4 +1,4 @@
-<div class="section-body mb-3">
+<div class="section-body mb-3" *ngFor="let topic of Topics">
     <div class="article">
         <!-- Media -->
         <div class="media p-3">
@@ -6,7 +6,7 @@
             <div class="media-body">
                 <div class="article-title">
                     <h5>
-                        Why Colleges now imposing uniforms?
+                        {{topic.topic}}
                         <span class="locked alert-bg"><img src="../../assets/images/lock-icon.png" /></span>
                         <a href="#" class="
                     btn btn-round
