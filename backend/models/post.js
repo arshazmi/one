@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
                 },
     desc:{
                  type: DataTypes.STRING,
-                 field: 'user_img',
+                 field: 'post_desc',
                  validate: { len: [0,500] }
     }
   }, {
@@ -43,8 +43,8 @@ module.exports = (sequelize, DataTypes) => {
    
    Post.belongsTo(models.topic);
    Post.belongsTo(models.user);
-   //Post.hasOne(models.postengage);
-
+   Post.belongsTo(models.postengage);//
+   Post.hasMany(models.comment);
   }
   return Post;
 };

@@ -7,6 +7,9 @@ const topic = require("../controllers/topicController.js");
  const express = require("express");
  const router=express.Router();
 
+ // Retrieve all topic categories
+ router.get("/category", topic.findCategory);
+
  // Add a new topic 
  router.post("/", topic.create);  
 

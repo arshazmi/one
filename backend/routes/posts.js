@@ -11,17 +11,17 @@ const post = require("../controllers/postController.js");
  router.post("/", post.create);  
 
  // Retrieve all post
- router.get("/", post.findAll);
+ router.get("/cc", post.findCount);
 
- // Retrieve latest post
- router.get("/latest", post.findRecent);
+ // Retrieve latest posts
+ router.get("/home", post.findRecent);
 
 
  // Retrieve a post
  router.get("/:id", post.findOne);
 
  // Delete a post
- router.delete("/:id", post.delete);
+ //router.delete("/:id", post.delete);
  
 
 
