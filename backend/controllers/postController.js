@@ -12,9 +12,10 @@ const Comment =model.db.comment;
 const sequelize=model.db.sequelize;
 // Create and Save a new Topic
 exports.create = (req, res) => {
- 
+ console.log("create post")
+ res.send("api not written")
   // Create a Topic
-  const post = {
+/*   const post = {
     postName: req.body.postName,
     desc:req.body.desc,
     imageUrl: req.body.imageUrl,
@@ -36,7 +37,7 @@ exports.create = (req, res) => {
         message:
           err.message || "Some error occurred while creating the Post."
       });
-    });
+    }); */
 };
 
 // Retrieve comment count Info from the database.
