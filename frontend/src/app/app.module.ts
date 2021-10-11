@@ -20,6 +20,7 @@ import { TopicdetailComponent } from './topicdetail/topicdetail.component';
 import { TopicbodyComponent } from './topicbody/topicbody.component';
 import { PostdetailComponent } from './postdetail/postdetail.component';
 import { CommentComponent } from './comment/comment.component';
+import { PostComponent } from './post/post.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CommentComponent } from './comment/comment.component';
     TopicdetailComponent,
     TopicbodyComponent,
     PostdetailComponent,
-    CommentComponent
+    CommentComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

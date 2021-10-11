@@ -17,7 +17,7 @@
                     </h5>
                 </div>
                 <div class="article-body">
-                    <h5 (click)="getPostDetail(top)">
+                    <h5 (click)="getAPost(top.id)">
                         {{top.postName}}
                         <a class="
                     btn btn-outline-primary btn-round
@@ -65,18 +65,18 @@
             <ul class="list-unstyled coments-use">
                 <li>
                     <a href="#" class="comment"><img src="../../assets/images/icon-like.png" /></a>
-                    <span class="total">{{top.postengage.post_likes}}</span>
+                    <span class="total">{{top.postengage.like}}</span>
                 </li>
                 <li>
                     <a href="#" class="comment"><img src="../../assets/images/icon-dislike.png" /></a>
-                    <span class="total">{{top.postengage.post_dislikes}}</span>
+                    <span class="total">{{top.postengage.dislike}}</span>
                 </li>
-                <li>
-                    <a href="#">
+                <li >
+                    <a routerLink='/postdetail/{{top.id}}'>
                         <img src="../../assets/images/icon-comment.png" />
                         <!-- <sup><span class="locked alert-bg"><img src="../../assets/images/lock-icon.png" /></span></sup> -->
                     </a>
-                    <span class="total"></span>
+                    <span  class="total">{{top.comment_count}}</span>
                 </li>
                
             </ul>
