@@ -12,18 +12,18 @@
         </div>
         <div class="topic-list">
           <ul class="list-unstyled">
-            <!-- <li>
+            <li *ngFor="let top of topTopics">
               <div class="media mb-4">
-                <img class="mr-3 rounded-circle" src="{{topTopics.imageUrl}}"
+                <img class="mr-3 rounded-circle" style="width: 43px;height:50px;"src="{{top.imageUrl}}"
                   alt="Generic placeholder image" />
                 <div class="media-body mt-2">
                   <h6 class="mt-0 topic-title">
-                    <a href="#">{{topTopics.topicName}}</a>
+                    {{top.topicName}}
                   </h6>
                 </div>
               </div>
-            </li> -->
-             <li>
+            </li>
+             <!-- <li>
               <div class="media mb-4">
                 <img class="mr-3 rounded-circle" src="../../assets/images/image-side2.png"
                   alt="Generic placeholder image" />
@@ -34,7 +34,7 @@
                   </h6>
                 </div>
               </div>
-            </li> 
+            </li>  -->
             <!-- <li>
               <div class="media mb-4">
                 <img class="mr-3 rounded-circle" src="../../assets/images/image-side3.png"
