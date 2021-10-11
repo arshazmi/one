@@ -21,7 +21,8 @@ export class SectionbodyComponent implements OnInit {
     },
     topic:{
       id:'',
-      topicName:''
+      topicName:'',
+      imageUrl:''
     }, 
     postengage:{
       id:'',
