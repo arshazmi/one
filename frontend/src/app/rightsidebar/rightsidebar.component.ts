@@ -10,16 +10,17 @@ export class RightsidebarComponent implements OnInit {
 topTopics=[{
   id:'',
   topicName:'',
-  imageUrl:''
+  imageUrl:'',
 }]
   constructor(private router:Router,private route: ActivatedRoute,
     private _Service:RightService) { }
 
   ngOnInit(): void {
-  //   this._Service.getTopTopics().subscribe((data)=>{
-  //     console.log(data);
-  //     this.topTopics=JSON.parse(JSON.stringify(data));
-  // })
+    this._Service.getTopTopics().subscribe((data)=>{
+      // console.log(data);
+      this.topTopics=JSON.parse(JSON.stringify(data));
+      
+  })
   }
 
 }

@@ -9,9 +9,14 @@ private baseUrl =' http://localhost:90/api';
   constructor(private http:HttpClient) { }
 
   getTopTopics():Observable<any>{
-    
+    // console.log("service1");
     return this.http.get(`${this.baseUrl}/topic/top`);
-    
+  
+  }
+
+  getTopics():Observable<any>{
+     console.log("service2");
+    return this.http.get(`${this.baseUrl}/post/home`);
   }
 
   // getTopics(id:any){
