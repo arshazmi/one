@@ -148,11 +148,18 @@ exports.findOne = (req, res) => {
       },
       { 
         model: Comment, 
-        attributes:['id','description','like','dislike'],        
-        required:true
-      }
-    ],
-    group : ['post.id','user.id','topic.id','postengage.id','comments.id']
+        attributes:['id','description','like','dislike','userId'],        
+        required:true,
+        include : [
+          { 
+            model: User, 
+            attributes:['id','userName','userImage'],
+            required: true
+          }
+      
+    ]
+  }],
+    group : ['post.id','user.id','topic.id','postengage.id','comments.id','comments.user.id']
       } )
     .then(data => {
       res.send(data);
