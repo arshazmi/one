@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { RightService } from '../right.service';
 
 @Component({
@@ -7,7 +8,6 @@ import { RightService } from '../right.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  id=1;
   top={
     id: 0,
     postName: '',
@@ -15,6 +15,7 @@ export class PostComponent implements OnInit {
     pdfUrl: '',
     audioUrl: '',
     desc:'',
+    updatedAt:'',
     comment_count:0,
     user:{
       id:'',
@@ -28,14 +29,25 @@ export class PostComponent implements OnInit {
       id:'',
       like:'',
       dislike:''
-    } 
+    } ,
+    comments: [
+      {
+          id: 0,
+          description: '',
+          like: 0,
+          dislike:0,
+          userId:0
+      }
+  ]
    }
-  constructor(private _Service:RightService) { }
+  constructor(private _route:ActivatedRoute, private _Service:RightService) { }
 
   ngOnInit(): void {
-    this._Service.getPostById(this.id).subscribe(data=>{
-      console.log(data);
+    const id=+this._route.snapshot.params['id'];
+    this._Service.getPostById(id).subscribe(data=>{
       this.top=data;
+      console.log(data);
+
     })
   }
 

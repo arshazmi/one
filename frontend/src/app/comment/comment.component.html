@@ -25,15 +25,16 @@
           
                 <!--//-->
                 <!---->
+                <div class="section-body mb-3" *ngFor="let top of comments">
               <div class="media border-0 p-2">
                   <img src="../../assets/images/auther1.jpg" alt="John Doe" class="mr-3  mt-3 rounded-circle" style="width:60px;">
                   <div class="media-body pt-3">
-                    <h6 class="comment-hed-color pt-2"><b>Gabriel Lamberts</b><small class="gray-color-text"><img src="../../assets/images/clock.png" alt="John Doe" class="pl-2 pr-2">2 day ago</small></h6>
-                    <p class="media-p-color">Vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                    <h6 class="comment-hed-color pt-2"><b>{{top.user}} Gabriel Lamberts</b><small class="gray-color-text"><img src="../../assets/images/clock.png" alt="John Doe" class="pl-2 pr-2">2 day ago</small></h6>
+                    <p class="media-p-color">{{top.description}}</p>
                     <div class="post-comment">
                     <ul class="list-unstyled d-flex comments-use">
-                      <li class="pr-4 border-right"> <a href="#" class="comment"><img src="../../assets/images/icon-like.png" ></a> <span>1K</span></li>
-                       <li class="ml-4"> <a href="#" class="comment"><img src="../../assets/images/icon-dislike.png"></a> <span>15K</span> </li>
+                      <li class="pr-4 border-right"> <a href="#" class="comment com-sp"><img src="../../assets/images/icon-like.png" ></a> <span>{{top.like}}</span></li>
+                       <li class="ml-4"> <a href="#" class="comment com-sp"><img src="../../assets/images/icon-dislike.png"></a> <span>{{top.dislike}}</span> </li>
                       </ul>
                     </div>
                     <hr>
@@ -42,5 +43,6 @@
                 <!--//-->
           </div>
       </div>
+    </div>
     </div>
 </section>
