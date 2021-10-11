@@ -8,6 +8,8 @@ import { RightService } from '../right.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+  id:number=0;
+  ready=0;
   top={
     id: 0,
     postName: '',
@@ -36,19 +38,26 @@ export class PostComponent implements OnInit {
           description: '',
           like: 0,
           dislike:0,
-          userId:0
+          userId:0,
+          user: {
+            id: 0,
+            userName: '',
+            userImage: ''
+        }
       }
   ]
    }
   constructor(private _route:ActivatedRoute, private _Service:RightService) { }
 
   ngOnInit(): void {
-    const id=+this._route.snapshot.params['id'];
-    this._Service.getPostById(id).subscribe(data=>{
+    this.id=+this._route.snapshot.params['id'];
+    this._Service.getPostById(this.id).subscribe(data=>{
       this.top=data;
       console.log(data);
-
+      this.ready=1;
     })
   }
+
+  
 
 }

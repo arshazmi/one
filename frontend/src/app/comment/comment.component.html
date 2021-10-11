@@ -27,9 +27,9 @@
                 <!---->
                 <div class="section-body mb-3" *ngFor="let top of comments">
               <div class="media border-0 p-2">
-                  <img src="../../assets/images/auther1.jpg" alt="John Doe" class="mr-3  mt-3 rounded-circle" style="width:60px;">
+                  <img src={{top.user.userImage}} alt="John Doe" class="mr-3  mt-3 rounded-circle" style="width:60px;">
                   <div class="media-body pt-3">
-                    <h6 class="comment-hed-color pt-2"><b>{{top.user}} Gabriel Lamberts</b><small class="gray-color-text"><img src="../../assets/images/clock.png" alt="John Doe" class="pl-2 pr-2">2 day ago</small></h6>
+                    <h6 class="comment-hed-color pt-2"><b>{{top.user.userName}}</b><small class="gray-color-text"><img src="../../assets/images/clock.png" alt="John Doe" class="pl-2 pr-2">2 day ago</small></h6>
                     <p class="media-p-color">{{top.description}}</p>
                     <div class="post-comment">
                     <ul class="list-unstyled d-flex comments-use">
