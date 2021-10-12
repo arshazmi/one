@@ -14,31 +14,40 @@ const sequelize=model.db.sequelize;
 // Create and Save a new Post
 exports.create = (req, res) => {
  console.log("create post")
- res.send("api not written")
   // Create a Post
-/*   const post = {
+  const post = {
     postName: req.body.postName,
     desc:req.body.desc,
     imageUrl: req.body.imageUrl,
     audioUrl:req.body.audioUrl,
-    audioUrl:req.body.pdfUrl,
+    pdfUrl:req.body.pdfUrl,
     topicId:req.body.topicId,
     userId:Math.floor(Math.random() * 2)+1,
-    postengageId:req.body.postengageId
+    
   };
 
   // Save Post in the database
   Post.create(post)
     .then(data => {
-     // res.send(data);
-     res.status(201).json({message:"Post created successfully"});
+      const id=data.id;
+      PostEngage.create({id:id,like:0,dislike:0})  
+      return id;
+    
+    })
+    .then(id=>{
+      Post.update({ postengageId: id }, {
+        where: {
+          id: id
+        }
+      })
+      res.status(201).json({message:"Post created successfully"});
     })
     .catch(err => {
       res.status(500).json({
         message:
           err.message || "Some error occurred while creating the Post."
       });
-    }); */
+    }); 
 };
 exports.commentcreate = (req, res) => {
   //create comment
