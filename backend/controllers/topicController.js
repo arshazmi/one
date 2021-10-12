@@ -6,7 +6,9 @@ const model = require("../models");
 // write modelname 
 const Topic =model.db.topic;
 const User =model.db.user;
+const Post =model.db.post;
 const TopicCategory =model.db.topiccategory;
+const sequelize=model.db.sequelize;
 
 // Retrieve all  Topic Category from the database.
 exports.findCategory = (req, res) => {
@@ -111,7 +113,26 @@ exports.findRecent = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Topic.findOne(  {  where: { id: id } } )
+  Topic.findOne(  
+    {  where: { id: id },
+    attributes: ['id', 'topicName','imageUrl',  [sequelize.fn('COUNT', 'posts.id'), 'PostCount'] ],
+    group:['topic.id','posts.id','user.id','posts->user.id'],
+    include : [
+      { 
+        model: User, 
+        attributes:['id','userName','userImage'],
+        required: true,
+      },
+      { 
+        model: Post, 
+        //attributes: ['id', 'postName','imageUrl','pdfUrl','audioUrl','desc','updatedAt'],
+        where:{topicId:id},
+        include:User,
+        required: true,
+      }
+    ]
+   
+  } )
     .then(data => {
       res.send(data);
     })
