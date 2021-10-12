@@ -20,13 +20,15 @@ export class SectionbodyComponent implements OnInit {
     },
     topic:{
       id:'',
-      topicName:''
+      topicName:'',
+      imageUrl:''
     }, 
     postengage:{
       id:'',
       post_likes:'',
       post_dislikes:''
-    } 
+    } ,
+    comment_count:''
    }]
   constructor(private router:Router,private route: ActivatedRoute,
     private _Service:RightService) { }

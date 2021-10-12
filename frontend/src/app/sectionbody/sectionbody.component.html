@@ -2,7 +2,7 @@
     <div class="article">
         <!-- Media -->
         <div class="media p-3">
-            <img src="../../assets/images/author1.jpg" alt="John Doe" class="mr-3 rounded-circle" style="width: 86px" />
+            <img src="{{top.topic.imageUrl}}" alt="John Doe" class="mr-3 rounded-circle" style="width: 86px" />
             <div class="media-body">
                 <div class="article-title">
                     <h5 (click)="getTopicDetail(top)">
@@ -52,9 +52,9 @@
                     <!--//-->
                     <!-- <img src="../../assets/images/voice-image.jpg" class="img-fluid mb-4" /> -->
                     <div class="popup-images d-flex postImages">
-                        <a href="#" class="m-1" >
+                        
                             <img style="height: 150px;" src="{{top.imageUrl}}" class="brd-rounded5" />
-                        </a>
+                        
                     </div>
                 </div>
             </div>
@@ -64,19 +64,19 @@
         <div class="comment p-3 mt-2 mb-3">
             <ul class="list-unstyled coments-use">
                 <li>
-                    <a href="#" class="comment"><img src="../../assets/images/icon-like.png" /></a>
+                    <img class="comment"src="../../assets/images/icon-like.png" />
                     <span class="total">{{top.postengage.post_likes}}</span>
                 </li>
                 <li>
-                    <a href="#" class="comment"><img src="../../assets/images/icon-dislike.png" /></a>
+                    <img class="comment" src="../../assets/images/icon-dislike.png" />
                     <span class="total">{{top.postengage.post_dislikes}}</span>
                 </li>
                 <li>
-                    <a href="#">
-                        <img src="../../assets/images/icon-comment.png" />
+                    
+                        <img class="mr-2"src="../../assets/images/icon-comment.png" />
                         <!-- <sup><span class="locked alert-bg"><img src="../../assets/images/lock-icon.png" /></span></sup> -->
-                    </a>
-                    <span class="total"></span>
+                   
+                    <span class="total">{{top.comment_count}}</span>
                 </li>
                
             </ul>
