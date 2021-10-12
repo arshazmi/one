@@ -1,9 +1,9 @@
-<div class="section-body mb-3">
+<div class="section-body mb-3"*ngFor="let top of topicdetail" >
     <div class="bg-img-top rounded-top p-3" id="topheader">
       <!---->
       <div class="row clearfix">
         <div class="col-md-2 col-12">
-          <img src="../../assets/images/top-header-img.png" alt="" class="rounded-circle img-responsive">
+          <img src="{{top.imageUrl}}" style="height: 90px;" alt="" class="rounded-circle img-responsive">
         </div>
         <div class="col-md-10 col-12">
           <span class="float-right pt-3">
@@ -19,13 +19,13 @@
                 </div>
                 <!--//-->
             </span>
-           <h5 class="text-white pt-3 mb-4">What weird food combinations do you<br> really enjoy?</h5>
+           <h5 class="text-white pt-3 mb-4">{{top.topicName}}</h5>
            <ul class="list-unstyled list-left">
              <!-- <li class="pl-0">
                   <small>FOLLOWERS <span class="font-white font-semibold pl-3">220</span>  </small>
              </li> -->
              <li>
-                  <small >POSTS <span class="font-white font-semibold pl-3">18</span>  </small>
+                  <small >POSTS <span class="font-white font-semibold pl-3">1</span>  </small>
              </li>
            </ul>                    
         </div>
@@ -47,7 +47,10 @@
             <h5 class="pt-4"><img src="../../assets/images/author1.jpg" alt="" class="mr-3 rounded-circle" style="width:60px;"> John Doe</h5>
           </div>
           <div class="article-body pt-0">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation <a class="font-pink" href="#"><small><u>more...</u></small></a></p>
+            <p>{{top.description}}
+               <!-- <a class="font-pink" href="#">
+              <small><u>more...</u></small></a> -->
+            </p>
             <p class="author">Posted by <a href="#">James_007 </a>Sep 25 2020</p>
             <!---->
             <!-- <div class="tags mb-4"> <a href="#" class="btn btn-tags selected mr-1"> #COLLEGE </a> <a href="#" class="btn btn-tags mr-1"> #EDUCATION </a> <a href="#" class="btn btn-tags mr-1"> #SCHOOL </a></div> -->

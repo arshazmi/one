@@ -2,6 +2,7 @@
  * Author:Dawtie 
  * Controller for Post
 */
+// const { like } = require("sequelize/types/lib/operators");
 const model = require("../models");
 // write modelname 
 const Topic =model.db.topic;
@@ -10,11 +11,11 @@ const User =model.db.user;
 const PostEngage =model.db.postengage;
 const Comment =model.db.comment;
 const sequelize=model.db.sequelize;
-// Create and Save a new Topic
+// Create and Save a new Post
 exports.create = (req, res) => {
  console.log("create post")
  res.send("api not written")
-  // Create a Topic
+  // Create a Post
 /*   const post = {
     postName: req.body.postName,
     desc:req.body.desc,
@@ -26,7 +27,7 @@ exports.create = (req, res) => {
     postengageId:req.body.postengageId
   };
 
-  // Save Topic in the database
+  // Save Post in the database
   Post.create(post)
     .then(data => {
      // res.send(data);
@@ -39,7 +40,33 @@ exports.create = (req, res) => {
       });
     }); */
 };
+exports.commentcreate = (req, res) => {
+  //create comment
+  const id = req.params.id;
+  // const likes=1
+  const comment = {
+    description:req.body.comment_desc,
+    like:req.body.comment_likes,
+    dislike:req.body.comment_dislikes,
+    postId:req.params.id
+  };
 
+  Comment.create(comment
+    // ,{
+    // where: { id: id }}
+    )
+  .then(data => {
+    res.send(data);
+    // res.status(201).json({ message: "comment created successfully" });
+  })
+  .catch(err => {
+    res.status(500).json({
+      message:
+        err.message || "Some error occurred while creating the comment."
+    });
+  });
+
+};
 // Retrieve comment count Info from the database.
 exports.findCount = (req, res) => {
 
@@ -106,24 +133,24 @@ exports.findRecent = (req, res) => {
     });
 };
 
-// Retrieve all given Topic Info from the database.
+// Retrieve all given POST Info from the database.
 exports.findAll = (req, res) => {
 
-  Topic.findAll()
+  Post.findAll()
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).json({
         message:
-          err.message || "Some error occurred while retrieving Topic."
+          err.message || "Some error occurred while retrieving Post."
       });
     });
 };
 
 
 
-// Retrieve a given Topic Info from the database.
+// Retrieve a given POST Info from the database.
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
@@ -172,27 +199,27 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Delete a Topic with the specified id in the request
+// Delete a Post with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Topic.destroy({
+  Post.destroy({
     where: { id: id }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Topic was deleted successfully!"
+          message: "Post was deleted successfully!"
         });
       } else {
         res.send({
-          message: "Cannot delete Topic with id=${id}. Maybe Topic was not found!"
+          message: "Cannot delete Post with id=${id}. Maybe Post was not found!"
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Topic with id=" + id
+        message: "Could not delete Post with id=" + id
       });
     });
 };
