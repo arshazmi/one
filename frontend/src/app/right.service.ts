@@ -19,6 +19,11 @@ private baseUrl =' http://localhost:90/api';
     return this.http.get(`${this.baseUrl}/post/home`);
   }
 
+  getTopicDetail(id:any):Observable<any>{
+    console.log("service3");
+   return this.http.get(`${this.baseUrl}/topic/${id}`);
+ }
+
   // getTopics(id:any){
   //   console.log(id);
   //   return this.http.get(`${this.baseUrl}/${id}`);

@@ -14,7 +14,7 @@ const sequelize=model.db.sequelize;
 exports.findCategory = (req, res) => {
 
   TopicCategory.findAll(
-    {attributes: ['id', 'categoryName']})
+    { attributes: ['id', 'categoryName'] })
     .then(data => {
       res.send(data);
     })
@@ -27,21 +27,21 @@ exports.findCategory = (req, res) => {
 };
 // Create and Save a new Topic
 exports.create = (req, res) => {
- 
+
   // Create a Topic
   const topic = {
     topicName: req.body.topicName,
-    description:req.body.description,
+    description: req.body.description,
     imageUrl: req.body.imageUrl,
-    userId:Math.floor(Math.random() * 2)+1,
-    topiccategoryId:req.body.topiccategoryId
+    userId: Math.floor(Math.random() * 2) + 1,
+    topiccategoryId: req.body.topiccategoryId
   };
 
   // Save Topic in the database
   Topic.create(topic)
     .then(data => {
-     // res.send(data);
-     res.status(201).json({message:"Topic created successfully"});
+      // res.send(data);
+      res.status(201).json({ message: "Topic created successfully" });
     })
     .catch(err => {
       res.status(500).json({
@@ -55,8 +55,8 @@ exports.create = (req, res) => {
 exports.findTop = (req, res) => {
 
   Topic.findAll({
-    limit: 6 ,
-    attributes: ['id', 'topicName','imageUrl']
+    limit: 6,
+    attributes: ['id', 'topicName', 'imageUrl']
   })
     .then(data => {
       res.send(data);
@@ -87,27 +87,27 @@ exports.findAll = (req, res) => {
 // Retrieve 10 recent Topic Info from the database(for carousal).
 exports.findRecent = (req, res) => {
 
-    Topic.findAll({ 
-      attributes: ['id', 'topicName','imageUrl'],
-      limit: 10 ,
-      order: [["createdAt", "DESC"]],
-      include : [
-        { 
-          model: User, 
-          attributes:['id','userName'],
-          required: true
-        }]
+  Topic.findAll({
+    attributes: ['id', 'topicName', 'imageUrl'],
+    limit: 10,
+    order: [["createdAt", "DESC"]],
+    include: [
+      {
+        model: User,
+        attributes: ['id', 'userName'],
+        required: true
+      }]
+  })
+    .then(data => {
+      res.send(data);
     })
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).json({
-          message:
-            err.message || "Some error occurred while retrieving Topic."
-        });
+    .catch(err => {
+      res.status(500).json({
+        message:
+          err.message || "Some error occurred while retrieving Topic."
       });
-  };
+    });
+};
 
 // Retrieve a given Topic Info from the database.
 exports.findOne = (req, res) => {

@@ -23,7 +23,8 @@ const post = require("../controllers/postController.js");
  // Delete a post
  //router.delete("/:id", post.delete);
  
-
+ // Add a new comment 
+ router.post("/comment/:id", post.commentcreate); 
 
  
  module.exports=router;
