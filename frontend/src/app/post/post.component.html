@@ -1,0 +1,90 @@
+<div class="section-body mb-3">
+<div class="article">
+    <!-- Media -->
+    <div class="media p-3">
+        <img src={{top.topic.imageUrl}} alt="John Doe" class="mr-3 rounded-circle" style="width: 86px" />
+        <div class="media-body">
+            <div class="article-title">
+                <h5 >
+                    {{top.topic.topicName}}
+                    <!-- <span class="locked alert-bg"><img src="../../assets/images/lock-icon.png" /></span> -->
+                    <a href="#" class="
+                btn btn-round
+                prm-btn
+                font-12
+                float-right
+              ">Follow</a>
+                </h5>
+            </div>
+            <div class="article-body">
+                <h5>
+                    {{top.postName}}
+                    <a class="
+                btn btn-outline-primary btn-round
+                font-12
+                create-post
+                float-right
+              ">
+                        &nbsp; Create Post</a>
+                </h5>
+                <p>
+                 {{top.desc}}
+                    <a class="font-pink" href="#"><small>more...</small></a>
+                </p>
+                <p class="author">
+                    Posted by <a href="#">{{top.user.userName}} </a>2 hours ago
+                </p>
+                <!---->
+                <!-- <div class="tags mb-4">
+                    <a href="#" class="btn btn-tags selected mr-1">
+                        #COLLEGE
+                    </a>
+                    <a href="#" class="btn btn-tags mr-1">
+                        #EDUCATION
+                    </a>
+                    <a href="#" class="btn btn-tags mr-1">
+                        #SCHOOL
+                    </a>
+                    <a href="#" class="btn btn-language float-right">
+                        English
+                    </a>
+                </div> -->
+                <!--//-->
+                <!-- <img src="../../assets/images/voice-image.jpg" class="img-fluid mb-4" /> -->
+                <div class="popup-images d-flex postImages">
+                    <a href="#" class="m-1" >
+                        <img style="height: 150px;" src="{{top.imageUrl}}" class="brd-rounded5" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//-->
+    <!-- Comments -->
+    <div class="comment p-3 mt-2 mb-3">
+        <ul class="list-unstyled coments-use">
+            <li>
+                <a href="#" class="comment"><img src="../../assets/images/icon-like.png" /></a>
+                <span class="total">{{top.postengage.like}}</span>
+            </li>
+            <li>
+                <a href="#" class="comment"><img src="../../assets/images/icon-dislike.png" /></a>
+                <span class="total">{{top.postengage.dislike}}</span>
+            </li>
+            <li >
+                <a routerLink='/post/{{top.id}}'>
+                    <img src="../../assets/images/icon-comment.png" />
+                    <!-- <sup><span class="locked alert-bg"><img src="../../assets/images/lock-icon.png" /></span></sup> -->
+                </a>
+                <span  class="total">{{top.comment_count}}</span>
+            </li>
+           
+        </ul>
+    </div>
+    <!--//-->
+</div>
+
+</div>
+<div *ngIf="ready">
+<app-comment [comments]="top.comments"></app-comment>
+</div>

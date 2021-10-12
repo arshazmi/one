@@ -19,6 +19,8 @@ import { TopicheadComponent } from './topichead/topichead.component';
 import { TopicdetailComponent } from './topicdetail/topicdetail.component';
 import { TopicbodyComponent } from './topicbody/topicbody.component';
 import { PostdetailComponent } from './postdetail/postdetail.component';
+import { CommentComponent } from './comment/comment.component';
+import { PostComponent } from './post/post.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { PostdetailComponent } from './postdetail/postdetail.component';
     TopicheadComponent,
     TopicdetailComponent,
     TopicbodyComponent,
-    PostdetailComponent
+    PostdetailComponent,
+    CommentComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

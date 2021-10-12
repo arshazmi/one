@@ -28,4 +28,8 @@ private baseUrl =' http://localhost:90/api';
   //   console.log(id);
   //   return this.http.get(`${this.baseUrl}/${id}`);
   // }
+  getPostById(id:number):Observable<any>{
+    console.log("Get a Post");
+    return this.http.get(`${this.baseUrl}/post/${id}`);
+  }
 }

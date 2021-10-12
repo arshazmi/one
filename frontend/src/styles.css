@@ -218,6 +218,8 @@ background-position: -24px -53px;
 .comment ul.coments-use li a > img{margin-right: 10px;}
 .comment ul.coments-use li span.total{display: inline-block;font-size: 18px;line-height: 30px;color: #21283e;}
 
+.com-sp{margin-right: 10px;}
+
 .invite-btn{color:#21273D;font-weight:600;text-transform:uppercase;background: #fff;line-height:35px;padding:0 15px;font-size:12px;border-radius: 18px}
 .widget-section{margin-bottom:20px}
 .widget-section .topic-list .media-body{border-bottom:1px solid #353E5A;padding-bottom:15px }

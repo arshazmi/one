@@ -240,4 +240,109 @@
       </div>
     </div> 
   </ng-template>
+  <!-- Create Post --Dawtie -->
+  <!-- Modal createPost -->
+<div class="modal fade" id="createPost" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content p-4">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class=" btn close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+      </div>
+      <div class="modal-body">
+        <h5 class="text-center title mb-2">Create Post</h5>
+        <!-- form -->
+        <form>
+          <div class="form-group mt-5">
+            <!-- <select class="form-control">
+              <option data-thumbnail="images/topic-icon2.png"> Choose a topic</option>
+              <option>Choose a topic</option>
+              <option>Choose a topic</option>
+            </select> -->
+            <select title="Choose a topic" class="selectpicker form-control">
+              <option data-thumbnail="../../assets/images/topic-icon2.png" disabled selected>Choose a topic</option>
+              <option *ngFor="let d of topics" >{{d.topicName}}</option>
+            </select>
+            <!-- <select id="id_select2_example" class="form-control">
+              <option data-img_src="../../assets/images/topic-icon2.png"> Choose a topic</option>
+              <option data-img_src="../../assets/images/topic-icon2.png"> Choose a topic</option>
+              <option data-img_src="../../assets/images/topic-icon2.png"> Choose a topic</option>
+            </select> -->
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="" class="form-control" placeholder="Title (Max 60 Characters)">
+          </div>
+          <!-- <div class="form-group">
+            <textarea class="form-control" placeholder="Labels (Ex: #kerala)"></textarea>
+          </div> -->
+          <div class="form-group">
+            <h5 class="form-heading-post pt-2 pb-2">Audio</h5>
+             <a href="#"><img src="../../assets/images/voice-image.jpg" class="img-fluid mb-2"></a>
+          </div>
+          <div class="form-group mb-4">
+            <div class="row float-right pr-3 pt-1">
+               <a href="#"><div class="btn btn-round btn-outline-primary font-12  pl-4 pr-4 ">REMOVE</div></a>
+            </div>
+          </div>
+          <div class="form-group"> 
+            <div class="row mt-5 mb-5 pt-2">
+            <div class="col-4 box-positionnn">
+                  <div class="card-box-dotted p-4 text-center">
+                       <a href=""><img src="../../assets/images/musicgray-icon.png" class="img-fluid"></a>   
+                      <div>
+                        <small><span class="text-primary"><u>Upload</u></span> your audio here</small>
+                 </div>
+                 </div>
+                 
+              </div>
+              <div class="col-4 box-positionnn">
+                <div class="card-box-dotted p-4 text-center">
+                     <a href=""><img src="../../assets/images/icon-post.png" class="img-fluid"></a>   
+                    <div>
+                      <small><span class="text-primary"><u>Upload</u></span> your pdf here</small>
+               </div>
+               </div>
+               
+            </div>
+             
+          </div>
+          </div>
+          <hr>
+          <div class="form-group">
+            <h5 class="form-heading-post pt-2">Images</h5>
+            <div class="col-12 mt-0 pt-0">
+              <label for="exampleFormControlTextarea1"></label>
+              <div class="card-box-dotted p-5 text-center"> <a href=""><img src="../../assets/images/choose.png" class="img-fluid mb-4"></a>
+                <div class="max-fourimg"><label>Drag & Drop Images OR Upload <br><span class="fourimgMax">( Max 4 Images )</span></label> <!-- <a class='btn btn-outline-primary btn-round font-12' href='javascript:;'> Choose File...
+                  <input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+                  </a> &nbsp; <span class='label label-info' id="upload-file-info"></span> --> </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="form-group">
+            <h5 class="form-heading-post pt-2">Text</h5>
+            <label for="comment" class="pt-2 pb-1">What's on Your mind?</label><br>
+            
+            <textarea class="form-control" rows="5" placeholder="Your text post (Max 500 Characters)" id="comment"></textarea>
+          </div>
+          <div class="form-group row">
+            <div class="col-6">
+            
+            </div>
+            <div class="col-6">
+              <div class="mt-4 float-right">
+                <button type="button" class="btn prm-btn btn-round font-12 mr-1">POST</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <!--//-->
+        
+      </div>
+    </div>
+  </div>
+</div>
+
 
