@@ -8,35 +8,38 @@ import { ActivatedRoute,Router } from '@angular/router';
 })
 export class SectionbodyComponent implements OnInit {
    topics=[{
-    id: '',
+    id: 0,
     postName: '',
     imageUrl: '',
     pdfUrl: '',
     audioUrl: '',
     desc:'',
+    comment_count:0,
     user:{
       id:'',
       userName:'',
     },
     topic:{
       id:'',
-      topicName:''
+      topicName:'',
+      imageUrl:''
     }, 
     postengage:{
       id:'',
-      post_likes:'',
-      post_dislikes:''
+      like:'',
+      dislike:''
     } 
    }]
   constructor(private router:Router,private route: ActivatedRoute,
     private _Service:RightService) { }
 
   ngOnInit(): void {
-   
-      this._Service.getTopics().subscribe((data)=>{
-        console.log(data);
-        this.topics=JSON.parse(JSON.stringify(data)); 
-  })
+ 
+    this._Service.getTopics().subscribe((data)=>{
+      console.log(data);
+      this.topics=JSON.parse(JSON.stringify(data)); 
+    })
+
   }
 
   getPostDetail(top:any){
@@ -45,5 +48,10 @@ export class SectionbodyComponent implements OnInit {
 
   getTopicDetail(top:any){
     this.router.navigate(['topicdetail',top.id]);
+  }
+
+  getAPost(id:number){
+    this.router.navigate(['post',id]);
+   
   }
 }
