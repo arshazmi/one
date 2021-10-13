@@ -20,13 +20,11 @@ exports.create = (req, res) => {
   const post = {
     postName: req.body.postName,
     desc:req.body.desc,
-    imageUrl: req.file.originalname,
-    audioUrl:req.body.audioUrl,
-    pdfUrl:req.body.pdfUrl,
+    imageUrl: req.files.bimage[0].path,
+    audioUrl:req.files.baudio[0].path,
+    pdfUrl:req.files.bpdf[0].path,
     topicId:req.body.topicId,
-    userId:Math.floor(Math.random() * 2)+1,
-    //postengageId:req.body.Id,
-    // postengageId:postId
+    userId:Math.floor(Math.random() * 2)+1
   };
 
   // Save Post in the database
