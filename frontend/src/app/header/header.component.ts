@@ -9,7 +9,8 @@ import { RightService } from '../right.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  
+  audioUrl:any;
+  pdfUrl:any;
   closeResult = '';
   topics=[{id:0,topicName:'',imageUrl:''}];
 
@@ -18,7 +19,7 @@ export class HeaderComponent {
   ngOnInit(){
     this.getTopics();
   }
-
+ 
   open(content:any) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -43,6 +44,30 @@ export class HeaderComponent {
       this.topics=data;
     })
   }
+
+  onFileChanged(event:any) {
+    const file = event.target.files[0];  
+    console.log(file)
+  }
+
+  audioFile(event:any)  {
+    const audio = event.target.files[0];
+    console.log(audio)
+    this.audioUrl='../../assets/uploads/'+audio.name;
+  }
+
+  pdfFile(event:any)  {
+    const pdf = event.target.files[0];
+    console.log(pdf);
+    this.pdfUrl='../../assets/uploads/'+pdf.name;
+  }
+
+  removeAudio(){
+    console.log("remove audio")
+    this.audioUrl=null;
+  }
+
   
+
 
 }
