@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   PostEngage.init({
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     like: {
                     type: DataTypes.INTEGER,
                     field: 'post_likes'
