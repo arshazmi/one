@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
 import { RightService } from '../right.service';
 
 @Component({
@@ -48,7 +49,15 @@ export class PostComponent implements OnInit {
       }
   ]
    }
-  constructor(private _route:ActivatedRoute, private _Service:RightService) { }
+  
+   pdfSource="./../../assets/uploads/sample.pdf";
+   imgPresent=false;
+   pdfPresent=false;
+   audioPresent=false;
+
+  constructor(private _route:ActivatedRoute, private _Service:RightService) {
+    pdfDefaultOptions.assetsFolder = 'bleeding-edge';
+   }
 
   ngOnInit(): void {
     this.id=+this._route.snapshot.params['id'];
@@ -56,6 +65,9 @@ export class PostComponent implements OnInit {
       this.top=data;
       console.log(data);
       this.ready=1;
+      if(data.imageUrl!==null) this.imgPresent=true;
+      if(data.pdfUrl!==null) this.pdfPresent=true;
+      if(data.audioUrl!==null) this.audioPresent=true;
     })
   }
 

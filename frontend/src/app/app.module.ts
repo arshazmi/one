@@ -21,6 +21,7 @@ import { TopicbodyComponent } from './topicbody/topicbody.component';
 import { PostdetailComponent } from './postdetail/postdetail.component';
 import { CommentComponent } from './comment/comment.component';
 import { PostComponent } from './post/post.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { PostComponent } from './post/post.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    NgxExtendedPdfViewerModule
   ],
   providers: [RightService],
   bootstrap: [AppComponent]
