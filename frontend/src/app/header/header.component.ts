@@ -16,10 +16,11 @@ export class HeaderComponent {
   public imagePath:any;
   imgURL: any;
   public message: string='';
-
+  topiccategory=[{id:0,categoryName:''}];
   constructor(private modalService: NgbModal, private _Service:RightService) {}
 
   ngOnInit(){
+    this.getTopiccategory();
     this.getTopics();
   }
  
@@ -39,6 +40,13 @@ export class HeaderComponent {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  getTopiccategory(){
+    this._Service.getTopiccategory().subscribe(data=>{
+      console.log(data);
+      this.topiccategory=data;
+    })
   }
 
   getTopics(){
