@@ -47,6 +47,7 @@ export class SectionbodyComponent implements OnInit {
   }
 
   getTopicDetail(top:any){
+    console.log(top,"top")
     this.router.navigate(['topicdetail',top.id]);
   }
 
