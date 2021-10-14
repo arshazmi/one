@@ -29,15 +29,12 @@ exports.create = (req, res) => {
   // Save Post in the database
   Post.create(post)
     .then(data => {
-      console.log(data.id);
       const id=data.id;
-      PostEngage.create({id:id,like:0,dislike:0})
-     
+      PostEngage.create({id:id,like:0,dislike:0})  
       return id;
-    //  res.status(201).json({message:"Post created successfully"});
+    
     })
     .then(id=>{
-      console.log("iidd",id)
       Post.update({ postengageId: id }, {
         where: {
           id: id
@@ -61,7 +58,7 @@ exports.commentcreate = (req, res) => {
     like:req.body.like,
     dislike:req.body.dislike,
     postId:req.params.id,
-    // userId: Math.floor(Math.random() * 2) + 1,
+    userId: Math.floor(Math.random() * 2) + 1,
   };
 
   Comment.create(comment
@@ -127,11 +124,11 @@ exports.findRecent = (req, res) => {
         model: Comment, 
         attributes:[/* 'postId',[sequelize.fn('COUNT', sequelize.col('comment_desc')), 'comment_count'] */],
         
-        required:true
+        //required:true
       }
     ],
     group : ['post.id','user.id','topic.id','postengage.id'],
-    limit: 4 ,
+    limit: 8 ,
     subQuery:false
 
   })
@@ -189,7 +186,7 @@ exports.findOne = (req, res) => {
       { 
         model: Comment, 
         attributes:['id','description','like','dislike','userId'],        
-        required:true,
+        //required:true,
         include : [
           { 
             model: User, 

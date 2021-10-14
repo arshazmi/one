@@ -14,8 +14,8 @@ let sequelize;
 // } else {
 //     sequelize = new Sequelize(config.database, config.username, config.password, config);
 // }
-//   sequelize=new Sequelize('postgres://postgres:1234@localhost:5432/onemic');
-sequelize=new Sequelize('postgres://postgres:root@localhost:5432/onemic');
+  sequelize=new Sequelize('postgres://postgres:1234@localhost:5432/onemic');
+//sequelize=new Sequelize('postgres://postgres:root@localhost:5432/training');
 fs
     .readdirSync(__dirname)
     .filter(file => {
