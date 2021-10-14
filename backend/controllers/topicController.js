@@ -4,15 +4,17 @@
 */
 const model = require("../models");
 // write modelname 
-const Topic = model.db.topic;
-const User = model.db.user;
-const TopicCategory = model.db.topiccategory;
+const Topic =model.db.topic;
+const User =model.db.user;
+const Post =model.db.post;
+const TopicCategory =model.db.topiccategory;
+const sequelize=model.db.sequelize;
 
 // Retrieve all  Topic Category from the database.
 exports.findCategory = (req, res) => {
 
   TopicCategory.findAll(
-    { attributes: ['id', 'categoryName'] })
+    {attributes: ['id', 'categoryName']})
     .then(data => {
       res.send(data);
     })
@@ -25,21 +27,21 @@ exports.findCategory = (req, res) => {
 };
 // Create and Save a new Topic
 exports.create = (req, res) => {
-
+ 
   // Create a Topic
   const topic = {
     topicName: req.body.topicName,
-    description: req.body.description,
+    description:req.body.description,
     imageUrl: req.body.imageUrl,
-    userId: Math.floor(Math.random() * 2) + 1,
-    topiccategoryId: req.body.topiccategoryId
+    userId:Math.floor(Math.random() * 2)+1,
+    topiccategoryId:req.body.topiccategoryId
   };
 
   // Save Topic in the database
   Topic.create(topic)
     .then(data => {
-      // res.send(data);
-      res.status(201).json({ message: "Topic created successfully" });
+     // res.send(data);
+     res.status(201).json({message:"Topic created successfully"});
     })
     .catch(err => {
       res.status(500).json({
@@ -53,8 +55,8 @@ exports.create = (req, res) => {
 exports.findTop = (req, res) => {
 
   Topic.findAll({
-    limit: 6,
-    attributes: ['id', 'topicName', 'imageUrl']
+    limit: 6 ,
+    attributes: ['id', 'topicName','imageUrl']
   })
     .then(data => {
       res.send(data);
@@ -85,33 +87,52 @@ exports.findAll = (req, res) => {
 // Retrieve 10 recent Topic Info from the database(for carousal).
 exports.findRecent = (req, res) => {
 
-  Topic.findAll({
-    attributes: ['id', 'topicName', 'imageUrl'],
-    limit: 10,
-    order: [["createdAt", "DESC"]],
-    include: [
-      {
-        model: User,
-        attributes: ['id', 'userName'],
-        required: true
-      }]
-  })
-    .then(data => {
-      res.send(data);
+    Topic.findAll({ 
+      attributes: ['id', 'topicName','imageUrl'],
+      limit: 10 ,
+      order: [["createdAt", "DESC"]],
+      include : [
+        { 
+          model: User, 
+          attributes:['id','userName'],
+          required: true
+        }]
     })
-    .catch(err => {
-      res.status(500).json({
-        message:
-          err.message || "Some error occurred while retrieving Topic."
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).json({
+          message:
+            err.message || "Some error occurred while retrieving Topic."
+        });
       });
-    });
-};
+  };
 
 // Retrieve a given Topic Info from the database.
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Topic.findOne({ where: { id: id } })
+  Topic.findOne(  
+    {  where: { id: id },
+    attributes: ['id', 'topicName','imageUrl','description',  [sequelize.fn('COUNT', 'posts.id'), 'PostCount'] ],
+    group:['topic.id','posts.id','user.id','posts->user.id'],
+    include : [
+      { 
+        model: User, 
+        attributes:['id','userName','userImage'],
+        required: true,
+      },
+      { 
+        model: Post, 
+        //attributes: ['id', 'postName','imageUrl','pdfUrl','audioUrl','desc','updatedAt'],
+        where:{topicId:id},
+        include:User,
+        required: true,
+      }
+    ]
+   
+  } )
     .then(data => {
       res.send(data);
     })

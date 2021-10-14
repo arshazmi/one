@@ -15,7 +15,6 @@ const sequelize=model.db.sequelize;
 // Create and Save a new Post
 exports.create = (req, res) => {
  console.log("create post")
- 
   // Create a Post
   const post = {
     postName: req.body.postName,

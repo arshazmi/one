@@ -31,6 +31,9 @@
                  {{top.desc}}
                     <a class="font-pink" href="#"><small>more...</small></a>
                 </p>
+                <div *ngIf="pdfPresent" class="pdf">
+                   <ngx-extended-pdf-viewer  [src]="pdfSource" [textLayer]="true" height="100vh"></ngx-extended-pdf-viewer>
+                </div>
                 <p class="author">
                     Posted by <a href="#">{{top.user.userName}} </a>2 hours ago
                 </p>
@@ -52,10 +55,12 @@
                 <!--//-->
                 <!-- <img src="../../assets/images/voice-image.jpg" class="img-fluid mb-4" /> -->
                 <div class="popup-images d-flex postImages">
-                    <a href="#" class="m-1" >
+                    <a *ngIf="imgPresent" href="#" class="m-1" >
                         <img style="height: 150px;" src="{{top.imageUrl}}" class="brd-rounded5" />
                     </a>
+
                 </div>
+
             </div>
         </div>
     </div>
