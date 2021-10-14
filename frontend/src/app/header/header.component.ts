@@ -17,6 +17,13 @@ export class HeaderComponent {
   imgURL: any;
   public message: string='';
 
+  audio:any;
+  file:any;
+  pdf:any;
+  postdesc:any;
+  postName:string='';
+  topic:any;
+
   constructor(private modalService: NgbModal, private _Service:RightService) {}
 
   ngOnInit(){
@@ -49,20 +56,21 @@ export class HeaderComponent {
   }
 
   onFileChanged(event:any) {
-    const file = event.target.files[0];  
-    console.log(file)
+    this.file = event.target.files[0];  
+    console.log(this.file)
   }
 
   audioFile(event:any)  {
-    const audio = event.target.files[0];
-    console.log(audio)
-    this.audioUrl='../../assets/uploads/'+audio.name;
+    this.audio = event.target.files[0];
+    console.log(this.audio)
+    this.audioUrl='../../assets/uploads/'+this.audio.name;
+    
   }
 
   pdfFile(event:any)  {
-    const pdf = event.target.files[0];
-    console.log(pdf);
-    this.pdfUrl='../../assets/uploads/'+pdf.name;
+    this.pdf = event.target.files[0];
+    console.log(this.pdf);
+    this.pdfUrl='../../assets/uploads/'+this.pdf.name;
   }
 
   removeAudio(){
@@ -88,7 +96,20 @@ export class HeaderComponent {
     }
   }
 
-
+   createPost(){
+     console.log("Post create function");
+    console.log(this.postName,this.postdesc,this.topic,this.file,this.audio,this.pdf)
+     const fd=new FormData();
+     fd.append('postName',this.postName);
+     fd.append('desc',this.postdesc);
+     fd.append('bimage',this.file,this.file.name);
+     fd.append('baudio',this.audio,this.audio.name);
+     fd.append('bpdf',this.pdf,this.pdf.name);
+     fd.append('topicId',this.topic);
+     this._Service.createPost(fd).subscribe(data=>{
+       console.log(data);
+     })
+   }
   
 
 

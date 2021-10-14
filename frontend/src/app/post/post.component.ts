@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
 import { RightService } from '../right.service';
-
+//import {} from '../../../../backend/'
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -50,7 +50,8 @@ export class PostComponent implements OnInit {
   ]
    }
   
-   pdfSource="./../../assets/uploads/sample.pdf";
+  // pdfSource="./../../assets/uploads/sample.pdf";
+  pdfSource="./../../assets/uploads/sample.pdf";
    imgPresent=false;
    pdfPresent=false;
    audioPresent=false;
@@ -62,15 +63,27 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.id=+this._route.snapshot.params['id'];
     this._Service.getPostById(this.id).subscribe(data=>{
+      console.log(data,"values in post");
+
       this.top=data;
-      console.log(data);
+      //this.top.imageUrl='../../../../backend/'+this.top.imageUrl;
+      //this.top.imageUrl='../../../../backend/public/images/image1582545990148.png'
       this.ready=1;
+     // data.imageUrl='../../../../backend/public/images/image1582545990148.png'
       if(data.imageUrl!==null) this.imgPresent=true;
       if(data.pdfUrl!==null) this.pdfPresent=true;
       if(data.audioUrl!==null) this.audioPresent=true;
+      console.log(data.pdfUrl,data.audioUrl,data.imageUrl);
+
     })
   }
 
-  
+  updateDone(evt:any):void{
+    console.log(evt)
+    this._Service.getPostById(this.id).subscribe(data=>{
+      this.top=data;
+  })
+}
+
 
 }

@@ -32,4 +32,15 @@ private baseUrl =' http://localhost:90/api';
     console.log("Get a Post");
     return this.http.get(`${this.baseUrl}/post/${id}`);
   }
+
+  postComment(id:number,msg:string){
+    console.log("Post comment");
+    return this.http.post(`${this.baseUrl}/post/comment/${id}`,{description:msg,like:0,dislike:0})
+  }
+
+  createPost(fd:FormData){
+    console.log("Post creation service");
+    return this.http.post(`${this.baseUrl}/post`,fd);
+  }
+
 }

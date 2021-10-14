@@ -8,10 +8,10 @@
            <img src="../../assets/images/author1.jpg" alt="John Doe" class="mr-3  mt-3 rounded-circle" style="width:60px;">
           <div class="media-body">
                <div class="form-group pt-2">
-                   <textarea placeholder="Write a response..." name="msg" id="msg"  cols="40" rows="5" class="form-control shadow">
+                   <textarea [(ngModel)]="msg" placeholder="Write a response..." name="msg" id="msg"  cols="40" rows="5" class="form-control shadow">
                    </textarea>
-                   <div class="pt-3">
-                         <a href="#" class="btn btn-round prm-btn font-12 mr-2">POST COMMENT</a>
+                   <div (click)="postComment()" class="pt-3">
+                         <a  class="btn btn-round prm-btn font-12 mr-2">POST COMMENT</a>
                    </div>
                 
               </div>
