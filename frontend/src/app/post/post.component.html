@@ -91,5 +91,5 @@
 
 </div>
 <div *ngIf="ready">
-<app-comment [comments]="top.comments"></app-comment>
+<app-comment [comments]="top.comments" [post]="top.id" (postcomment)="updateDone($event)"></app-comment>
 </div>

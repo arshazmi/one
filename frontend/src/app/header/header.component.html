@@ -255,9 +255,9 @@
         <form>
           <div class="form-group mt-5">
            
-            <select title="Choose a topic" class="selectpicker form-control">
-              <option data-thumbnail="../../assets/images/topic-icon2.png" disabled selected>Choose a topic</option>
-              <option *ngFor="let d of topics" >{{d.topicName}}</option>
+            <select [(ngModel)]="topic" name="topic" title="Choose a topic" class="selectpicker form-control">
+              <option data-thumbnail="../../assets/images/topic-icon2.png" [value]="topic" disabled selected>Choose a topic</option>
+              <option *ngFor="let d of topics" [value]="d.id" >{{d.topicName}}</option>
             </select>
             <!-- <select id="id_select2_example" class="form-control">
               <option data-img_src="../../assets/images/topic-icon2.png"> Choose a topic</option>
@@ -267,7 +267,7 @@
           </div>
 
           <div class="form-group">
-            <input type="text" name="" class="form-control" placeholder="Title (Max 60 Characters)">
+            <input type="text" [(ngModel)]="postName" name="postName" class="form-control" placeholder="Title (Max 60 Characters)">
           </div>
           <!-- <div class="form-group">
             <textarea class="form-control" placeholder="Labels (Ex: #kerala)"></textarea>
@@ -303,6 +303,9 @@
                       <small><span class="text-primary"><label class="upload-post" for="file_input_id2">Upload</label></span> your pdf here</small>
                       <input type="file" accept = "application/pdf" id="file_input_id2" (change)="pdfFile($event)">
                </div>
+               <div *ngIf="pdfUrl">
+                <small>{{pdf.name}}</small>
+               </div>
                </div>
                
             </div>
@@ -316,13 +319,15 @@
             <div class="col-12 mt-0 pt-0">
               <label for="exampleFormControlTextarea1"></label>
               <div class="card-box-dotted p-5 text-center"> <a *ngIf="!imgURL" href=""><img src="../../assets/images/choose.png" class="img-fluid mb-4"></a>
-                <div class="max-fourimg"><label *ngIf="!imgURL">Drag & Drop Images OR Upload <br><span class="fourimgMax">( Max 4 Images )</span></label> <!-- <a class='btn btn-outline-primary btn-round font-12' href='javascript:;'> Choose File...
+                <div (change)="onFileChanged($event)" class="max-fourimg"><label for="file-img-id" *ngIf="!imgURL"><!-- Drag & Drop Images OR --> Upload an Image for the given Post<br><span class="fourimgMax">( 1 Image Only )</span></label> <!-- <a class='btn btn-outline-primary btn-round font-12' href='javascript:;'> Choose File...
                   <input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
                   </a> &nbsp; <span class='label label-info' id="upload-file-info"></span> --> 
                   <img [src]="imgURL" height="200" *ngIf="imgURL">
-                  <div class='btn btn-outline-primary btn-round font-12' (change)="onFileChanged($event)">
-                    <input #file type="file" accept='image/*' (change)="preview(file.files)" />
-                  </div>
+                  <input #file type="file" accept='image/*' id="file-img-id" (change)="preview(file.files)" />
+
+                  <!-- <div class='btn btn-outline-primary btn-round font-12' >
+                    <label class="imga" >Choose image to upload</label>
+                  </div> -->
                 
                 </div>
               </div>
@@ -335,7 +340,7 @@
             <h5 class="form-heading-post pt-2">Text</h5>
             <label for="comment" class="pt-2 pb-1">What's on Your mind?</label><br>
             
-            <textarea class="form-control" rows="5" placeholder="Your text post (Max 500 Characters)" id="comment"></textarea>
+            <textarea [(ngModel)]="postdesc" name="postdesc" class="form-control" rows="5" placeholder="Your text post (Max 500 Characters)" id="comment"></textarea>
           </div>
           <div class="form-group row">
             <div class="col-6">
@@ -343,7 +348,7 @@
             </div>
             <div class="col-6">
               <div class="mt-4 float-right">
-                <button type="button" class="btn prm-btn btn-round font-12 mr-1">POST</button>
+                <button (click)="createPost()" type="button" class="btn prm-btn btn-round font-12 mr-1">POST</button>
               </div>
             </div>
           </div>

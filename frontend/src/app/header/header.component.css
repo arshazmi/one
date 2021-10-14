@@ -11,8 +11,14 @@ label{
     display:none;
   }
 
-  #file_input_id2{
+  #file_input_id2,#file-img-id{
     display:none;
+  }
+
+  
+  
+  label:hover{
+    text-decoration: underline;
   }
 
 
@@ -20,4 +26,15 @@ label{
     color: rgb(58,117,175) !important ;
     font-weight: 400;
     font-size: 13px  !important ;
+}
+
+.imga{
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.imga:hover{
+  text-decoration:none;
+  color: #FFF !important;
 }

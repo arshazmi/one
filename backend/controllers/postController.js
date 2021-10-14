@@ -58,7 +58,7 @@ exports.commentcreate = (req, res) => {
     like:req.body.like,
     dislike:req.body.dislike,
     postId:req.params.id,
-    // userId: Math.floor(Math.random() * 2) + 1,
+    userId: Math.floor(Math.random() * 2) + 1,
   };
 
   Comment.create(comment
@@ -124,11 +124,11 @@ exports.findRecent = (req, res) => {
         model: Comment, 
         attributes:[/* 'postId',[sequelize.fn('COUNT', sequelize.col('comment_desc')), 'comment_count'] */],
         
-        required:true
+        //required:true
       }
     ],
     group : ['post.id','user.id','topic.id','postengage.id'],
-    limit: 4 ,
+    limit: 8 ,
     subQuery:false
 
   })
