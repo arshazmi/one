@@ -186,7 +186,7 @@ exports.findOne = (req, res) => {
       { 
         model: Comment, 
         attributes:['id','description','like','dislike','userId'],        
-        required:true,
+        //required:true,
         include : [
           { 
             model: User, 

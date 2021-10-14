@@ -63,8 +63,11 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.id=+this._route.snapshot.params['id'];
     this._Service.getPostById(this.id).subscribe(data=>{
+      console.log(data,"values in post");
+
       this.top=data;
-      console.log(data);
+      //this.top.imageUrl='../../../../backend/'+this.top.imageUrl;
+      //this.top.imageUrl='../../../../backend/public/images/image1582545990148.png'
       this.ready=1;
      // data.imageUrl='../../../../backend/public/images/image1582545990148.png'
       if(data.imageUrl!==null) this.imgPresent=true;
