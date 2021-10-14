@@ -4,6 +4,7 @@
 */
 // const { like } = require("sequelize/types/lib/operators");
 const model = require("../models");
+const path = require("path");
 // write modelname 
 const Topic =model.db.topic;
 const Post =model.db.post;
@@ -18,12 +19,11 @@ exports.create = (req, res) => {
   const post = {
     postName: req.body.postName,
     desc:req.body.desc,
-    imageUrl: req.body.imageUrl,
-    audioUrl:req.body.audioUrl,
-    pdfUrl:req.body.pdfUrl,
+    imageUrl: req.files.bimage[0].path,
+    audioUrl:req.files.baudio[0].path,
+    pdfUrl:req.files.bpdf[0].path,
     topicId:req.body.topicId,
-    userId:Math.floor(Math.random() * 2)+1,
-    
+    userId:Math.floor(Math.random() * 2)+1
   };
 
   // Save Post in the database
@@ -54,10 +54,11 @@ exports.commentcreate = (req, res) => {
   const id = req.params.id;
   // const likes=1
   const comment = {
-    description:req.body.comment_desc,
-    like:req.body.comment_likes,
-    dislike:req.body.comment_dislikes,
-    postId:req.params.id
+    description:req.body.description,
+    like:req.body.like,
+    dislike:req.body.dislike,
+    postId:req.params.id,
+    // userId: Math.floor(Math.random() * 2) + 1,
   };
 
   Comment.create(comment
