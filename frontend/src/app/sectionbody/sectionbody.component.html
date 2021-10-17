@@ -34,10 +34,10 @@
                     <audio *ngIf="top.audioPresent"  controls>
                         <source src={{top.audioUrl}} type="audio/ogg">  
                      </audio>
-                     <div  class="col-4 box-positionnn">
+                     <div  *ngIf="top.pdfPresent" class="col-4 box-positionnn">
                         <div class="card-box-dotted p-4 text-center">
                              <a href=""><img src="../../assets/images/icon-post.png" class="img-fluid"></a>   
-                            <div *ngIf="top.pdfPresent" >
+                            <div>
                               <small><span class="text-primary"><label class="upload-post" (click)="getAPost(top.id)">Click to preview</label></span> </small>
                              
                        </div>
