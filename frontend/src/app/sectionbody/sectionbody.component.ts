@@ -7,11 +7,17 @@ import { ActivatedRoute,Router } from '@angular/router';
   styleUrls: ['./sectionbody.component.css']
 })
 export class SectionbodyComponent implements OnInit {
+  
+  url="http://localhost:90/";
+   
    topics=[{
     id: 0,
     postName: '',
     imageUrl: '',
     pdfUrl: '',
+    imgPresent:false,
+   pdfPresent:false,
+   audioPresent:false,
     audioUrl: '',
     desc:'',
     comment_count:0,
@@ -37,9 +43,23 @@ export class SectionbodyComponent implements OnInit {
  
     this._Service.getTopics().subscribe((data)=>{
       console.log(data);
+      this.showAssets(data);
       this.topics=JSON.parse(JSON.stringify(data)); 
     })
 
+  }
+
+  showAssets(top:any){
+    console.log(top)
+    top.forEach((data:any) => {
+      console.log(data,"ccccc");
+      if(data.imageUrl!==null) data.imageUrl=this.url+this.changePath(data.imageUrl);
+    if(data.audioUrl!==null) data.audioUrl=this.url+this.changePath(data.audioUrl);
+    if(data.pdfUrl!==null) data.pdfUrl=this.url+this.changePath(data.pdfUrl);
+    if(data.imageUrl!==null) data.imgPresent=true ; else data.imgPresent=false;
+    if(data.pdfUrl!==null) data.pdfPresent=true; else data.pdfPresent=false;
+    if(data.audioUrl!==null) data.audioPresent=true; else data.audioPresent=false;
+    });
   }
 
   getPostDetail(top:any){
@@ -55,4 +75,10 @@ export class SectionbodyComponent implements OnInit {
     this.router.navigate(['post',id]);
    
   }
+
+  changePath(imageUrl: any):string {
+    return imageUrl.replaceAll('\\','/')
+  }
+  
+
 }

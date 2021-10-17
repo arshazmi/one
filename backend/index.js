@@ -19,7 +19,7 @@ model.db.sequelize.sync().then(() => {
     console.log('Db created');
   });
 
-  app.use(express.static(path.join(__dirname+"/public")));    //sending static files
+  app.use('/public',express.static(path.join(__dirname+"/public")));    //sending static files
 
   app.listen(port,(req,res)=>{
     console.log(`App listening to port ${port}`);
