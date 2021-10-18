@@ -1,3 +1,8 @@
+/**
+ * Author:Arsheena Azmi 
+ * middleware for upload image ***post
+*/
+
 // var multer = require('multer'); //module to upload files
 
 // var storage =   multer.diskStorage({  

@@ -3,7 +3,7 @@
  * Route for Topic
 */
 const topic = require("../controllers/topicController.js");
-  
+const uploadt = require('../middleware/uploadtopic') 
  const express = require("express");
  const router=express.Router();
 
@@ -11,7 +11,7 @@ const topic = require("../controllers/topicController.js");
  router.get("/category", topic.findCategory);
 
  // Add a new topic 
- router.post("/", topic.create);  
+ router.post("/",uploadt, topic.create);  
 
  // Retrieve all topic
  router.get("/", topic.findAll);

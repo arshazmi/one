@@ -1,5 +1,5 @@
 /**
- * Author:Dawtie 
+ * Author:Arsheena Azmi 
  * Controller for Post
 */
 // const { like } = require("sequelize/types/lib/operators");
