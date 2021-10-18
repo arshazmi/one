@@ -25,6 +25,11 @@ export class HeaderComponent {
   postName:string='';
   topic:any;
 
+  topiccategoryId:any;
+  topicName:any;
+  description:any;
+  topicImage:any;
+
   constructor(private modalService: NgbModal, private _Service:RightService) {}
 
   ngOnInit(){
@@ -67,6 +72,11 @@ export class HeaderComponent {
   onFileChanged(event:any) {
     this.file = event.target.files[0];  
     console.log(this.file)
+  }
+
+  topicImg(event:any) {
+    this.topicImage = event.target.files[0];  
+    console.log(this.topicImage)
   }
 
   audioFile(event:any)  {
@@ -120,6 +130,20 @@ export class HeaderComponent {
      })
      window.location.reload();
    }
+
+   createTopic(){
+    console.log("Topic create function");
+   console.log("lat",this.topicName,this.description,this.topiccategoryId,this.topicImage)
+    const fd=new FormData();
+    fd.append('topicName',this.topicName);
+    fd.append('description',this.description);
+    fd.append('cimage',this.topicImage,this.topicImage.name);
+    fd.append('topiccategoryId',this.topiccategoryId);
+    this._Service.createTopic(fd).subscribe(data=>{
+      console.log(data);
+    })
+   // window.location.reload();
+  }
   
 
 

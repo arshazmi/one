@@ -48,4 +48,9 @@ private baseUrl =' http://localhost:90/api';
     return this.http.post(`${this.baseUrl}/post`,fd);
   }
 
+  createTopic(fd:FormData){
+    console.log("Topic creation service");
+    return this.http.post(`${this.baseUrl}/topic`,fd);
+  }
+
 }

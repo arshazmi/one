@@ -30,12 +30,12 @@ exports.findCategory = (req, res) => {
 };
 // Create and Save a new Topic
 exports.create = (req, res) => {
- 
+ console.log(req.body);
   // Create a Topic
   const topic = {
     topicName: req.body.topicName,
     description:req.body.description,
-    imageUrl: req.file.originalname,
+    imageUrl:'../../assets/images/'+ req.file.originalname,
     userId:Math.floor(Math.random() * 2)+1,
     topiccategoryId:req.body.topiccategoryId
   };
