@@ -20,13 +20,15 @@ const upload = require('../middleware/upload')
  // Retrieve a post
  router.get("/:id", post.findOne);
 
+ router.get("/view/:img",post.image);
+
  // Delete a post
- //router.delete("/:id", post.delete);
+ router.delete("/:id", post.delete);
  
  // Add a new comment 
  router.post("/comment/:id", post.commentcreate); 
 
-//  router.get("/", homeController.getHome);
+// Add a like or dislike
+// router.post("/postengage",post.engagecreate);
 
-//  router.post("/upload", upload.single("file"), post.uploadFiles);
  module.exports=router;

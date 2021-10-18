@@ -5,6 +5,16 @@ body {
     background: #F3F4F6;
 }
 
+input[type="file"] {
+        /* display: none; */
+        opacity: 0;
+        position: absolute;
+        top: 2px;
+        left: 10px;
+}
+
+
+
 p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
@@ -60,7 +70,7 @@ color: #fff !important;  font-family: 'Poppins', sans-serif;font-weight:500; lin
 .bg-white{background: #fff}
 .bg-skyblue{background:#f3f9ff} 
 .bg-skyblue2{background:#eef4fa; padding-top: 16px; padding-bottom: 16px;}
-.btn-outline-primary{line-height: 25px;font-size: 12px;color: #21283e;text-transform: uppercase;padding-left:18px; padding-right:18px;border-color: #2291BF;border-width:2px}
+.btn-outline-primary{line-height: 25px;font-size: 12px;color: #21283e;text-transform: uppercase;padding-left:18px; padding-right:18px;border-color: #2291BF;border-width:2px;max-width: 150px;}
 .btn-outline-primary:hover{/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2392c0+0,2392c0+20,3181b6+71,397ab4+86,3a75af+100 */
 background-color: rgb(35,146,192); /* Old browsers */
 background-color: -moz-linear-gradient(top,  rgba(35,146,192,1) 0%, rgba(35,146,192,1) 20%, rgba(49,129,182,1) 71%, rgba(57,122,180,1) 86%, rgba(58,117,175,1) 100%); /* FF3.6-15 */
