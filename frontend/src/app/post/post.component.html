@@ -30,8 +30,8 @@
                         &nbsp; Create Post</a>
                 </h5>
                 <p>
-                 {{top.desc}}
-                    <a class="font-pink" href="#"><small>more...</small></a>
+                 {{desc}}
+                    <a class="font-pink"><small *ngIf="desc_short" (click)="more()">more...</small></a>
                 </p>
                 <div *ngIf="pdfPresent" class="pdf">
                    <ngx-extended-pdf-viewer  src={{top.pdfUrl}} [textLayer]="true" height="100vh"></ngx-extended-pdf-viewer>

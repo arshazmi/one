@@ -49,7 +49,8 @@ export class PostComponent implements OnInit {
       }
   ]
    }
-  
+   desc_short=true;
+   desc:any;
    url="http://localhost:90/";
    imgPresent=false;
    pdfPresent=false;
@@ -72,7 +73,7 @@ export class PostComponent implements OnInit {
       if(data.pdfUrl!==null) this.pdfPresent=true;
       if(data.audioUrl!==null) this.audioPresent=true;
       console.log(data.pdfUrl,data.audioUrl,data.imageUrl);
-
+      this.moreHide();
     })
   }
 
@@ -81,10 +82,27 @@ export class PostComponent implements OnInit {
     this._Service.getPostById(this.id).subscribe(data=>{
       this.top=data;
   })
+  this.ngOnInit();
 }
 
 changePath(imageUrl: any):string {
   return imageUrl.replaceAll('\\','/')
+}
+
+more(){
+  this.desc_short=!this.desc_short;
+  this.moreHide();
+}
+
+moreHide(){
+  if(this.desc_short){
+    this.desc=this.top.desc;
+    this.desc=this.desc.substring(0,175);
+    console.log(this.desc);
+  }
+  else{
+    this.desc=this.top.desc;
+  }
 }
 
 }
