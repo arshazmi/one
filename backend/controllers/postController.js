@@ -208,7 +208,9 @@ exports.findOne = (req, res) => {
       });
     });
 };
-
+exports.image=(req,res)=>{        //image controller
+  res.sendFile(path.join(__dirname+"../../public/images/"+req.params.img));
+};
 // Delete a Post with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id;
