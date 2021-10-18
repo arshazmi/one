@@ -131,14 +131,14 @@
           <form>
             <div class="form-group">
               <label for="exampleFormControlInput1"></label>
-              <input type="text" class="form-control" id="exampleFormControlInput1"
+              <input type="text" [(ngModel)]="topicName" name="topicName" class="form-control" id="exampleFormControlInput1"
                 placeholder="Topic (Max 50 Characters)" />
             </div>
             <label for="selectOption">Select Categories for the topic</label>
             <div class="pb-2 pt-2">
-              <select class="selectpicker form-control ">
+              <select [(ngModel)]="topiccategoryId" name="topiccategoryId" class="selectpicker form-control ">
                 <!-- <option selected value="Arts" class="pb-2">Arts</option> -->
-                <option *ngFor="let t of topiccategory" class="pb-2">
+                <option *ngFor="let t of topiccategory" [value]="t.id" class="pb-2">
                   {{t.categoryName}}
                 </option>
 
@@ -146,7 +146,7 @@
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Description</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"
+              <textarea [(ngModel)]="description" name="description" class="form-control" id="exampleFormControlTextarea1" rows="5"
                 placeholder="Your text topic (Max 500 Characters)"></textarea>
             </div>
 
@@ -158,7 +158,7 @@
                   <div>
                     <div class="btn btn-outline-primary btn-round font-12" style="position:relative;">
                       Choose File
-                      <input #file type="file" accept='image/*' size="10" />
+                      <input #file type="file" accept='image/*' size="10" (change)="topicImg($event)" />
                       <!-- onchange='$("#upload-file-info").html($(this).val());' -->
 
 
@@ -168,8 +168,10 @@
                   </div>
                 </div>
                 <div class="mt-4 float-right">
-                  <a href=""><button type="button" class="btn prm-btn btn-round font-12 mr-1"
-                      (click)="modal.close('Save click')">
+                  <a href=""><button type="button"  (click)="createTopic()" class="btn prm-btn btn-round font-12 mr-1"
+                    
+                     >
+                      <!--  (click)="modal.close('Save click')" -->
                       CREATE
                     </button></a>
                 </div>
