@@ -2,7 +2,7 @@
               <!-- section -->
               <section>
                 <!-- Section Body -->
-                <app-topichead></app-topichead>
-                <app-topicbody></app-topicbody>
+                <app-topichead *ngIf="ready" [topic]="top"></app-topichead>
+                <app-topicbody *ngIf="ready" [posts]="posts"></app-topicbody>
               </section>
 

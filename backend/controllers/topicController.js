@@ -7,6 +7,8 @@ const model = require("../models");
 const Topic =model.db.topic;
 const User =model.db.user;
 const Post =model.db.post;
+const PostEngage =model.db.postengage;
+const Comment =model.db.comment;
 const TopicCategory =model.db.topiccategory;
 const sequelize=model.db.sequelize;
 
@@ -127,8 +129,20 @@ exports.findOne = (req, res) => {
         model: Post, 
         //attributes: ['id', 'postName','imageUrl','pdfUrl','audioUrl','desc','updatedAt'],
         where:{topicId:id},
-        include:User,
         required: true,
+        include:User,
+          /* [{ 
+            model: PostEngage, 
+            attributes:['id','like','dislike'],
+            required: true,
+          },
+          { 
+            model: Comment, 
+            attributes:['id','description','like','dislike','userId']
+          }
+        ] */
+        
+       
       }
     ]
    

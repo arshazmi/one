@@ -50,8 +50,7 @@ export class PostComponent implements OnInit {
   ]
    }
   
-  // pdfSource="./../../assets/uploads/sample.pdf";
-  pdfSource="./../../assets/uploads/sample.pdf";
+   url="http://localhost:90/";
    imgPresent=false;
    pdfPresent=false;
    audioPresent=false;
@@ -64,12 +63,11 @@ export class PostComponent implements OnInit {
     this.id=+this._route.snapshot.params['id'];
     this._Service.getPostById(this.id).subscribe(data=>{
       console.log(data,"values in post");
-
+      if(data.imageUrl!==null) data.imageUrl=this.url+this.changePath(data.imageUrl);
+      if(data.audioUrl!==null) data.audioUrl=this.url+this.changePath(data.audioUrl);
+      if(data.pdfUrl!==null) data.pdfUrl=this.url+this.changePath(data.pdfUrl);
       this.top=data;
-      //this.top.imageUrl='../../../../backend/'+this.top.imageUrl;
-      //this.top.imageUrl='../../../../backend/public/images/image1582545990148.png'
       this.ready=1;
-     // data.imageUrl='../../../../backend/public/images/image1582545990148.png'
       if(data.imageUrl!==null) this.imgPresent=true;
       if(data.pdfUrl!==null) this.pdfPresent=true;
       if(data.audioUrl!==null) this.audioPresent=true;
@@ -85,5 +83,10 @@ export class PostComponent implements OnInit {
   })
 }
 
+changePath(imageUrl: any):string {
+  return imageUrl.replaceAll('\\','/')
+}
 
 }
+ 
+

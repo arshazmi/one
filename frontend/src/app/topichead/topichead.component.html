@@ -3,7 +3,7 @@
       <!---->
       <div class="row clearfix">
         <div class="col-md-2 col-12">
-          <img src="{{top.imageUrl}}" style="height: 90px;" alt="" class="rounded-circle img-responsive">
+          <img src="{{topic.imageUrl}}" style="height: 90px;" alt="" class="rounded-circle img-responsive">
         </div>
         <div class="col-md-10 col-12">
           <span class="float-right pt-3">
@@ -19,13 +19,13 @@
                 </div>
                 <!--//-->
             </span>
-           <h5 class="text-white pt-3 mb-4">{{top.topicName}}</h5>
+           <h5 class="text-white pt-3 mb-4">{{topic.topicName}}</h5>
            <ul class="list-unstyled list-left">
              <!-- <li class="pl-0">
                   <small>FOLLOWERS <span class="font-white font-semibold pl-3">220</span>  </small>
              </li> -->
              <li>
-                  <small >POSTS <span class="font-white font-semibold pl-3">1</span>  </small>
+                  <small >POSTS <span class="font-white font-semibold pl-3">{{topic.PostCount}}</span>  </small>
              </li>
            </ul>                    
         </div>
@@ -44,14 +44,14 @@
       <div class="media p-3"> 
         <div class="media-body">
           <div class="article-title border-bottom-0">
-            <h5 class="pt-4"><img src="../../assets/images/author1.jpg" alt="" class="mr-3 rounded-circle" style="width:60px;"> John Doe</h5>
+            <h5 class="pt-4"><img src="../../assets/images/author1.jpg" alt="" class="mr-3 rounded-circle" style="width:60px;"> {{topic.user.userName}}</h5>
           </div>
           <div class="article-body pt-0">
-            <p>{{top.description}}
+            <p>{{topic.description}}
                <!-- <a class="font-pink" href="#">
               <small><u>more...</u></small></a> -->
             </p>
-            <p class="author">Posted by <a href="#">James_007 </a>Sep 25 2020</p>
+            <p class="author">Posted by <a href="#">{{topic.user.userName}} </a>Sep 25 2020</p>
             <!---->
             <!-- <div class="tags mb-4"> <a href="#" class="btn btn-tags selected mr-1"> #COLLEGE </a> <a href="#" class="btn btn-tags mr-1"> #EDUCATION </a> <a href="#" class="btn btn-tags mr-1"> #SCHOOL </a></div> -->
             <!--//--> 

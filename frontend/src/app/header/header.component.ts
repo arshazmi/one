@@ -109,6 +109,7 @@ export class HeaderComponent {
      this._Service.createPost(fd).subscribe(data=>{
        console.log(data);
      })
+     window.location.reload();
    }
   
 
