@@ -205,10 +205,10 @@
             <!-- <select title="Choose a topic" class="selectpicker form-control">
               <option data-thumbnail="../../assets/images/topic-icon2.png" disabled selected>Choose a topic</option>
               <option *ngFor="let d of topics">{{d.topicName}}</option> -->
-
-            <select [(ngModel)]="topic" name="topic" title="Choose a topic" class="selectpicker form-control">
-              <option data-thumbnail="../../assets/images/topic-icon2.png" [value]="topic" disabled selected>Choose a
-                topic</option>
+             <label for="choosetopic"> <small>Choose a topic</small></label>
+            <select id="choosetopic" [(ngModel)]="topic" name="topic" title="Choose a topic" class="selectpicker form-control">
+              <!-- <option data-thumbnail="../../assets/images/topic-icon2.png" [value]="topic" disabled selected>Choose a
+                topic</option> -->
               <option *ngFor="let d of topics" [value]="d.id">{{d.topicName}}</option>
             </select>
             <!-- <select id="id_select2_example" class="form-control">
