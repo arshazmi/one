@@ -3,6 +3,7 @@
  * Controller for Topic
 */
 const model = require("../models");
+const path = require("path");
 // write modelname 
 const Topic =model.db.topic;
 const User =model.db.user;
@@ -34,7 +35,7 @@ exports.create = (req, res) => {
   const topic = {
     topicName: req.body.topicName,
     description:req.body.description,
-    imageUrl: req.body.imageUrl,
+    imageUrl: req.file.originalname,
     userId:Math.floor(Math.random() * 2)+1,
     topiccategoryId:req.body.topiccategoryId
   };

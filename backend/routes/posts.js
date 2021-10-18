@@ -1,5 +1,5 @@
 /**
- * Author:Dawtie 
+ * Author:Arsheena Azmi 
  * Route for Post
 */
 const post = require("../controllers/postController.js");
@@ -20,7 +20,7 @@ const upload = require('../middleware/upload')
  // Retrieve a post
  router.get("/:id", post.findOne);
 
- router.get("/view/:img",post.image);
+//  router.get("/view/:img",post.image);
 
  // Delete a post
  router.delete("/:id", post.delete);
