@@ -49,6 +49,8 @@ exports.create = (req, res) => {
       });
     }); 
 };
+
+//Add a comment
 exports.commentcreate = (req, res) => {
   //create comment
   const id = req.params.id;

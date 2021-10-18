@@ -34,8 +34,11 @@
                     <a class="font-pink" href="#"><small>more...</small></a>
                 </p>
                 <div *ngIf="pdfPresent" class="pdf">
-                   <ngx-extended-pdf-viewer  [src]="pdfSource" [textLayer]="true" height="100vh"></ngx-extended-pdf-viewer>
+                   <ngx-extended-pdf-viewer  src={{top.pdfUrl}} [textLayer]="true" height="100vh"></ngx-extended-pdf-viewer>
                 </div>
+                <audio *ngIf="audioPresent"  controls>
+                    <source src={{top.audioUrl}} type="audio/ogg">  
+                 </audio>
                 <p class="author">
                     Posted by <a href="#">{{top.user.userName}} </a>2 hours ago
                 </p>
