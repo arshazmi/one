@@ -64,6 +64,7 @@ export class PostComponent implements OnInit {
     this.id=+this._route.snapshot.params['id'];
     this._Service.getPostById(this.id).subscribe(data=>{
       console.log(data,"values in post");
+      data.topic.imageUrl='http://localhost:90/'+data.topic.imageUrl.slice(2);
       if(data.imageUrl!==null) data.imageUrl=this.url+this.changePath(data.imageUrl);
       if(data.audioUrl!==null) data.audioUrl=this.url+this.changePath(data.audioUrl);
       if(data.pdfUrl!==null) data.pdfUrl=this.url+this.changePath(data.pdfUrl);

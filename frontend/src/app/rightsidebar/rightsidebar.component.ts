@@ -18,8 +18,11 @@ topTopics=[{
   ngOnInit(): void {
     this._Service.getTopTopics().subscribe((data)=>{
       // console.log(data);
-      this.topTopics=JSON.parse(JSON.stringify(data));
       
+      data.forEach((element: { id:number,topicName:string,imageUrl: string; }) => {
+        element.imageUrl='http://localhost:90/'+element.imageUrl.slice(2);
+      });
+      this.topTopics=JSON.parse(JSON.stringify(data));
   })
   }
 

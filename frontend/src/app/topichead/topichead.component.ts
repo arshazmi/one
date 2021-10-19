@@ -41,6 +41,8 @@ export class TopicheadComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void { 
+    this.topic.imageUrl='http://localhost:90/'+this.topic.imageUrl.slice(2);
+   
     console.log(this.topic)
     }
 
