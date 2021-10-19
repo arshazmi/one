@@ -14,14 +14,14 @@ const Comment =model.db.comment;
 const sequelize=model.db.sequelize;
 // Create and Save a new Post
 exports.create = (req, res) => {
- console.log("create post")
+ console.log("create post",req.files,req.body)
   // Create a Post
   const post = {
     postName: req.body.postName,
     desc:req.body.desc,
-    imageUrl: req.files.bimage[0].path,
-    audioUrl:req.files.baudio[0].path,
-    pdfUrl:req.files.bpdf[0].path,
+    imageUrl: req.files. fieldname==='bimage'?req.files.bimage[0].path:null,
+    audioUrl:req.files. fieldname==='baudio'?req.files.baudio[0].path:null,
+    pdfUrl:req.files. fieldname==='bpdf'?req.files.bpdf[0].path:null,
     topicId:req.body.topicId,
     userId:Math.floor(Math.random() * 2)+1
   };
