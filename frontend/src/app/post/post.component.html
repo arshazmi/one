@@ -21,17 +21,17 @@
             <div class="article-body">
                 <h5>
                     {{top.postName}}
-                    <a class="
+                    <!-- <a class="
                 btn btn-outline-primary btn-round
                 font-12
                 create-post
                 float-right
               ">
-                        &nbsp; Create Post</a>
+                        &nbsp; Create Post</a> -->
                 </h5>
                 <p>
-                 {{top.desc}}
-                    <a class="font-pink" href="#"><small>more...</small></a>
+                 {{desc}}
+                    <a class="font-pink"><small class="point" *ngIf="desc_short" (click)="more()">more...</small></a>
                 </p>
                 <div *ngIf="pdfPresent" class="pdf">
                    <ngx-extended-pdf-viewer  src={{top.pdfUrl}} [textLayer]="true" height="100vh"></ngx-extended-pdf-viewer>

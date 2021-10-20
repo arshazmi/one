@@ -19,17 +19,17 @@
                 <div class="article-body">
                     <h5 (click)="getAPost(top.id)">
                         {{top.postName}}
-                        <a class="
+                        <!-- <a class="
                     btn btn-outline-primary btn-round
                     font-12
                     create-post
                     float-right
                   ">
-                            &nbsp; Create Post</a>
+                            &nbsp; Create Post</a> -->
                     </h5>
                     <p>
                      {{top.desc}}
-                        <a class="font-pink" href="#"><small>more...</small></a>
+                        <!-- <a class="font-pink" href="#"><small>more...</small></a> -->
                     </p>
                     <audio *ngIf="top.audioPresent"  controls>
                         <source src={{top.audioUrl}} type="audio/ogg">  

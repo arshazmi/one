@@ -21,13 +21,13 @@ export class HeaderComponent {
   audio:any;
   file:any;
   pdf:any;
-  postdesc:any;
+  postdesc:string='';
   postName:string='';
   topic:any;
 
   topiccategoryId:any;
-  topicName:any;
-  description:any;
+  topicName:string='';
+  description:string='';
   topicImage:any;
 
   constructor(private modalService: NgbModal, private _Service:RightService) {}
@@ -95,6 +95,7 @@ export class HeaderComponent {
   removeAudio(){
     console.log("remove audio")
     this.audioUrl=null;
+    this.audio=undefined;
   }
 
   preview(files:any) {
@@ -121,14 +122,17 @@ export class HeaderComponent {
      const fd=new FormData();
      fd.append('postName',this.postName);
      fd.append('desc',this.postdesc);
+     if(this.file!==undefined)
      fd.append('bimage',this.file,this.file.name);
+     if(this.audio!==undefined)
      fd.append('baudio',this.audio,this.audio.name);
+     if(this.pdf!==undefined)
      fd.append('bpdf',this.pdf,this.pdf.name);
      fd.append('topicId',this.topic);
      this._Service.createPost(fd).subscribe(data=>{
        console.log(data);
+       window.location.reload();
      })
-     window.location.reload();
    }
 
    createTopic(){

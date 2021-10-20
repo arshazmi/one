@@ -53,6 +53,8 @@ export class SectionbodyComponent implements OnInit {
     console.log(top)
     top.forEach((data:any) => {
       console.log(data,"ccccc");
+       data.topic.imageUrl='http://localhost:90/'+data.topic.imageUrl.slice(2);
+     
       if(data.imageUrl!==null) data.imageUrl=this.url+this.changePath(data.imageUrl);
     if(data.audioUrl!==null) data.audioUrl=this.url+this.changePath(data.audioUrl);
     if(data.pdfUrl!==null) data.pdfUrl=this.url+this.changePath(data.pdfUrl);

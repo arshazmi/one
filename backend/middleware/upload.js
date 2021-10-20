@@ -22,7 +22,7 @@ var multer = require('multer'); //module to upload files
 var path=require('path');
 var storage =   multer.diskStorage({  
     destination: (req, file, cb)=>{  
-    //   callback(null, './public/images');  
+    //   callback(null, './public/images'); 
     if (file.fieldname === "bimage") {
         cb(null, './public/images')
     }

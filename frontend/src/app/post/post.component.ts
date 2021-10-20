@@ -49,7 +49,8 @@ export class PostComponent implements OnInit {
       }
   ]
    }
-  
+   desc_short=true;
+   desc:any;
    url="http://localhost:90/";
    imgPresent=false;
    pdfPresent=false;
@@ -63,6 +64,7 @@ export class PostComponent implements OnInit {
     this.id=+this._route.snapshot.params['id'];
     this._Service.getPostById(this.id).subscribe(data=>{
       console.log(data,"values in post");
+      data.topic.imageUrl='http://localhost:90/'+data.topic.imageUrl.slice(2);
       if(data.imageUrl!==null) data.imageUrl=this.url+this.changePath(data.imageUrl);
       if(data.audioUrl!==null) data.audioUrl=this.url+this.changePath(data.audioUrl);
       if(data.pdfUrl!==null) data.pdfUrl=this.url+this.changePath(data.pdfUrl);
@@ -72,7 +74,7 @@ export class PostComponent implements OnInit {
       if(data.pdfUrl!==null) this.pdfPresent=true;
       if(data.audioUrl!==null) this.audioPresent=true;
       console.log(data.pdfUrl,data.audioUrl,data.imageUrl);
-
+      this.moreHide();
     })
   }
 
@@ -81,10 +83,27 @@ export class PostComponent implements OnInit {
     this._Service.getPostById(this.id).subscribe(data=>{
       this.top=data;
   })
+  this.ngOnInit();
 }
 
 changePath(imageUrl: any):string {
   return imageUrl.replaceAll('\\','/')
+}
+
+more(){
+  this.desc_short=!this.desc_short;
+  this.moreHide();
+}
+
+moreHide(){
+  if(this.desc_short){
+    this.desc=this.top.desc;
+    this.desc=this.desc.substring(0,175);
+    console.log(this.desc);
+  }
+  else{
+    this.desc=this.top.desc;
+  }
 }
 
 }
