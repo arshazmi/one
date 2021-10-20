@@ -14,8 +14,6 @@ const Comment =model.db.comment;
 const sequelize=model.db.sequelize;
 // Create and Save a new Post
 exports.create = (req, res) => {
- console.log("create post",req.files,req.body)
- console.log(req.files.bimage,req.files.fieldname==='bimage'?req.files.bimage[0].path:"ok")
   // Create a Post
   const post = {
     postName: req.body.postName,

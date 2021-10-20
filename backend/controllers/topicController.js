@@ -30,7 +30,6 @@ exports.findCategory = (req, res) => {
 };
 // Create and Save a new Topic
 exports.create = (req, res) => {
- console.log(req.body,req.file);
   // Create a Topic
   const topic = {
     topicName: req.body.topicName,
