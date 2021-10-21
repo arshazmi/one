@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TopicbodyComponent implements OnInit {
   @Input() posts:any=[];
   url="http://localhost:90/";
+ 
   constructor() { }
 
   ngOnInit(): void {
@@ -29,6 +30,6 @@ export class TopicbodyComponent implements OnInit {
   changePath(imageUrl: any):string {
     return imageUrl.replaceAll('\\','/')
   }
- 
+
 
 }

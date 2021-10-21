@@ -74,11 +74,11 @@
     <div class="comment p-3 mt-2 mb-3">
         <ul class="list-unstyled coments-use">
             <li>
-                <a href="#" class="comment"><img src="../../assets/images/icon-like.png" /></a>
+                <a (click)="upvote()" class="comment"><img src="../../assets/images/icon-like.png" /></a>
                 <span class="total">{{top.postengage.like}}</span>
             </li>
             <li>
-                <a href="#" class="comment"><img src="../../assets/images/icon-dislike.png" /></a>
+                <a (click)="downvote()" class="comment"><img src="../../assets/images/icon-dislike.png" /></a>
                 <span class="total">{{top.postengage.dislike}}</span>
             </li>
             <li >

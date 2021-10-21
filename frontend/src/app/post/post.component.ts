@@ -11,6 +11,7 @@ import { RightService } from '../right.service';
 export class PostComponent implements OnInit {
   id:number=0;
   ready=0;
+  vote=0;
   top={
     id: 0,
     postName: '',
@@ -30,9 +31,9 @@ export class PostComponent implements OnInit {
       imageUrl:''
     }, 
     postengage:{
-      id:'',
-      like:'',
-      dislike:''
+      id:0,
+      like:0,
+      dislike:0
     } ,
     comments: [
       {
@@ -105,6 +106,40 @@ moreHide(){
     this.desc=this.top.desc;
   }
 }
+
+
+  upvote(){
+    if(this.vote===1){//like
+      this.vote=0;//no like or dislike
+      this.top.postengage.like--;
+    }else if(this.vote===2) { //dislike
+      this.vote=1;
+      this.top.postengage.like++;
+      this.top.postengage.dislike--;
+    }else{
+      this.vote=1;
+      this.top.postengage.like++;
+    }
+    
+ }
+ 
+ downvote(){
+    if(this.vote===2){//dislike
+      this.vote=0;//no like or dislike
+      this.top.postengage.dislike--;
+    }else if(this.vote===1){
+      this.vote=2;
+      this.top.postengage.dislike++;
+      this.top.postengage.like--;
+    }else {//no vote or dislike
+      this.vote=2;
+      this.top.postengage.dislike++;
+    }
+    
+ }
+ 
+
+ 
 
 }
  
