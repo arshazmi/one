@@ -65,7 +65,7 @@
                     </div> -->
                     <!--//-->
                     <!-- <img src="../../assets/images/voice-image.jpg" class="img-fluid mb-4" /> -->
-                    <div class="popup-images d-flex postImages">
+                    <div *ngIf="top.imgPresent" class="popup-images d-flex postImages">
                         
                             <img style="height: 150px;" src="{{top.imageUrl}}" class="brd-rounded5" />
                         
@@ -78,11 +78,11 @@
         <div class="comment p-3 mt-2 mb-3">
             <ul class="list-unstyled coments-use">
                 <li>
-                    <a href="#" class="comment"><img src="../../assets/images/icon-like.png" /></a>
+                    <a routerLink='/post/{{top.id}}' class="comment"><img src="../../assets/images/icon-like.png" /></a>
                     <span class="total">{{top.postengage.like}}</span>
                 </li>
                 <li>
-                    <a href="#" class="comment"><img src="../../assets/images/icon-dislike.png" /></a>
+                    <a routerLink='/post/{{top.id}}' class="comment"><img src="../../assets/images/icon-dislike.png" /></a>
                     <span class="total">{{top.postengage.dislike}}</span>
                 </li>
                 <li >
