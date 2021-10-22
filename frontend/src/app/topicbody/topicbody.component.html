@@ -8,8 +8,8 @@
                     <h5>{{post.postName}}</h5>
                 </div>
                 <div class="article-body">
-                    <p>{{post.desc}} <a
-                            class="font-pink" href="#"><small><u>more...</u></small></a></p>
+                    <p>{{post.desc}}<!--  <a
+                            class="font-pink" href="#"><small><u>more...</u></small></a> --></p>
                     <p class="author">Posted by <a href="#">{{post.user.userName}} </a>2 hours ago</p>
                     <!---->
                     <!-- <div class="tags mb-4"> <a href="#" class="btn btn-tags selected mr-1"> #COLLEGE </a> <a href="#"
@@ -27,7 +27,15 @@
                         <source src={{post.audioUrl}} type="audio/ogg">  
                      </audio>
                      <div *ngIf="post.pdfUrl" class="pdf">
-                        <ngx-extended-pdf-viewer  src={{post.pdfUrl}} [textLayer]="true" height="100vh"></ngx-extended-pdf-viewer>
+                        <div class="card-box-dotted p-4 text-center">
+                            <a href=""><img src="../../assets/images/icon-post.png" class="img-fluid"></a>   
+                           <div>
+                             <small><span class="text-primary"><label class="upload-post" (click)="getAPost(post.id)">Click to preview pdf file</label></span> </small>
+                            
+                      </div>
+                      
+                      </div>
+                        <!-- <ngx-extended-pdf-viewer  src={{post.pdfUrl}} [textLayer]="true" height="100vh"></ngx-extended-pdf-viewer> -->
                      </div>
                 </div>
             </div>
@@ -36,11 +44,11 @@
         <!-- Comments -->
         <div class="comment p-3 mt-2 mb-3">
             <ul class="list-unstyled coments-use">
-                <li> <a href="#" class="comment"><img src="../../assets/images/icon-like.png"></a> <span class="total">
+                <li> <a  routerLink='/post/{{post.id}}' class="comment"><img src="../../assets/images/icon-like.png"></a> <span class="total">
                         1K</span> </li>
-                <li> <a href="#" class="comment"><img src="../../assets/images/icon-dislike.png"></a> <span
+                <li> <a  routerLink='/post/{{post.id}}' class="comment"><img src="../../assets/images/icon-dislike.png"></a> <span
                         class="total">15</span> </li>
-                <li> <a href="#"> <img src="../../assets/images/icon-comment.png"> </a> <span class="total">32</span>
+                <li> <a  routerLink='/post/{{post.id}}'> <img src="../../assets/images/icon-comment.png"> </a> <span class="total">32</span>
                 </li>
                 <!-- <li> <a href="#" class="comment"><img src="images/icon-forward.png"></a> <span class="total">20</span> </li>
           <li> <a href="#" class="comment"><img src="images/icon-pin.png"></a> <span class="total">08</span> </li>

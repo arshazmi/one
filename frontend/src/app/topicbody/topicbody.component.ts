@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topicbody',
@@ -9,7 +10,7 @@ export class TopicbodyComponent implements OnInit {
   @Input() posts:any=[];
   url="http://localhost:90/";
  
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
     console.log(this.posts,"topicbody")
@@ -29,6 +30,11 @@ export class TopicbodyComponent implements OnInit {
 
   changePath(imageUrl: any):string {
     return imageUrl.replaceAll('\\','/')
+  }
+
+  getAPost(id:number){
+    this.router.navigate(['post',id]);
+   
   }
 
 
